@@ -1,9 +1,30 @@
-## Gestor Barber
-<h4> Gestor Barber é um sistema desenvolvido para facilitar o gerenciamento de barbearias. 
-</h4> <h4> O sistema foi desenvolvido por Breno Vinicius Costa, aluno do Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais – <i>Campus</i> Formiga, como Trabalho de Conclusão do Curso Técnico Integrado ao Ensino Médio em Informática. </h4>
+# Gestor Barber
 
-## Getting started
+Gestor Barber é um sistema desenvolvido para facilitar o gerenciamento de barbearias. 
+O sistema foi desenvolvido por Breno Vinicius Costa, aluno do Instituto Federal de Educação, Ciência e Tecnologia de Minas Gerais – <i>Campus</i> Formiga, como Trabalho de Conclusão do Curso Técnico Integrado ao Ensino Médio em Informática.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+# Requisitos
+* Java 8
+* Node v14.18.0 
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+# Iniciando a aplicação
+
+### Banco de dados
+Primeiramente devemos criar o container do docker que contem nosso banco de dados. 
+Para isso vá até a pasta docker em gestor_barber/backend/src/docker e rode o seguinte comando:
+`docker-compose up -d`
+
+### Backend
+Agora, devemos subir nosso serviço do backend. Para isso, vá até a pasta backend e rode o comando a seguir: <br>
+`mvn clean install`<br>
+Na mesma pasta, rode o comando:<br>
+`mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xmx128m -Xms128m"`<br>
+Agora nossa API estará de funcionando!
+
+### Frontend
+Agora iremos executar nossa aplicação do frontend. Para isso, vá até a pasta frontend e execute:<br>
+`npm install`<br>
+Logo após, execute:<br>
+`npm start`
+
+Agora nossa aplicação estará funcioando e podera ser acessada através da url: `http://localhost:4200/`
