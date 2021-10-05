@@ -5,7 +5,35 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
 
-    <changeSet id="202109081602-1" author="breno">
+    <changeSet id="202110042247-1" author="breno">
+
+        <createTable tableName="pessoa" remarks="Tabela contendo dados de pessoa">
+            <column name="id" type="bigint" remarks="Um inteiro, contendo o identificador de pessoa.">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(100)" remarks="Uma string, contendo o nome de pessoa.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(100)" remarks="Uma string, contendo o email de pessoa.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="senha" type="varchar(50)" remarks="Uma string, contendo a senha de pessoa.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf" type="varchar(15)" remarks="Uma string, contendo o cpf de pessoa.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="varchar(15)" remarks="Uma string, contendo o tipo de pessoa.">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addAutoIncrement
+                columnDataType="bigint"
+                columnName="id"
+                incrementBy="1"
+                startWith="1"
+                tableName="pessoa"/>
 
     </changeSet>
 
