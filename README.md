@@ -6,6 +6,7 @@ O sistema foi desenvolvido por Breno Vinicius Costa, aluno do Instituto Federal 
 # Requisitos
 * Java 8
 * Node v14.18.0 
+* Angular v12.2.8
 
 # Iniciando a aplicação
 
@@ -18,7 +19,7 @@ Para isso vá até a pasta docker em gestor_barber/backend/src/docker e rode o s
 Agora, devemos subir nosso serviço do backend. Para isso, vá até a pasta backend e rode o comando a seguir: <br>
 `mvn clean install`<br>
 Na mesma pasta, rode o comando:<br>
-`mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xmx128m -Xms128m"`<br>
+`mvn spring-boot:run`<br>
 Agora nossa API estará de funcionando!
 
 ### Frontend
@@ -27,4 +28,4 @@ Agora iremos executar nossa aplicação do frontend. Para isso, vá até a pasta
 Logo após, execute:<br>
 `npm start`
 
-Agora nossa aplicação estará funcioando e podera ser acessada através da url: `http://localhost:4200/`
+Agora nossa aplicação estará funcioando e podera ser acessada através da url: [http://localhost:4200/](http://localhost:4200/)
