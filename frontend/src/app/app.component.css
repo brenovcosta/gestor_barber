@@ -1,0 +1,22 @@
+.topo{
+  background-color: #1c1c1c;
+  color: #f4f7f5;
+  height: 10%;
+}
+
+.fim{
+  background-color: #1c1c1c;
+  color: #f4f7f5;
+  height: 8%;
+  font-size: 1em;
+  float: bottom !important;
+}
+
+.body{
+  background-color: #f4f7f5;
+}
+
+.title{
+  font-size: 1.3em;
+  padding-left: 15px;
+}
