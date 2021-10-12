@@ -1,6 +1,48 @@
 <p-toast position="top-right"></p-toast>
 <div class="p-grid p-fluid">
   <block-ui>
-
+    <div class="sm:col-12 grid text-800">
+      <div class="sm:col-12">
+        <span>
+          <label for="nome">Nome*:</label>
+          <input id="nome" type="text" [(ngModel)]="pessoa.nome" pInputText>
+        </span>
+      </div>
+      <div class="sm:col-12">
+        <span>
+          <label for="email">Email*:</label>
+          <input id="email" type="email" [(ngModel)]="pessoa.email" pInputText>
+        </span>
+      </div>
+      <div class="sm:col-12">
+        <span>
+          <label for="senha">Senha*:</label>
+          <input id="senha" type="password" [(ngModel)]="pessoa.senha" pInputText>
+        </span>
+      </div>
+      <div class="sm:col-12 grid">
+        <div class="sm:col-6">
+          <span>
+            <label for="cpf">CPF*:</label>
+            <p-inputMask mask="999.999.999-99" [(ngModel)]="pessoa.cpf" id="cpf"></p-inputMask>
+          </span>
+        </div>
+        <div class="sm:col-6">
+          <span>
+            <label for="tipo">Tipo*:</label>
+            <p-dropdown id="tipo" [options]="tipos" [(ngModel)]="tipo" optionLabel="nome"></p-dropdown>
+          </span>
+        </div>
+      </div>
+      <div class="sm:col-4">
+        <button pButton type="button" label="Cancelar" class="p-button-danger" (click)="cancelar()"></button>
+      </div>
+      <div class="sm:col-4">
+        <button pButton type="reset" label="Limpar" class="p-button-warning" (click)="limpar()"></button>
+      </div>
+      <div class="sm:col-4">
+        <button pButton type="submit" label="Salvar" class="p-button-success" (click)="salvar()"></button>
+      </div>
+    </div>
   </block-ui>
 </div>

@@ -17,6 +17,13 @@ import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {BlockUIModule} from "ng-block-ui";
 import {MessageService} from "primeng/api";
+import {ToolbarModule} from "primeng/toolbar";
+import {DropdownModule} from "primeng/dropdown";
+import {FormsModule} from "@angular/forms";
+import {InputMaskModule} from "primeng/inputmask";
+import {DialogModule} from "primeng/dialog";
+import {TableModule} from "primeng/table";
+import {UsuarioModule} from "./usuario/usuario.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +34,7 @@ import {MessageService} from "primeng/api";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    UsuarioModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -35,9 +43,15 @@ import {MessageService} from "primeng/api";
     ToastModule,
     InputNumberModule,
     BlockUIModule.forRoot(),
+    ToolbarModule,
     ButtonModule,
     InputTextModule,
-    BrowserAnimationsModule
+    InputMaskModule,
+    DropdownModule,
+    DialogModule,
+    TableModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     MessageService,
