@@ -24,6 +24,8 @@ import {InputMaskModule} from "primeng/inputmask";
 import {DialogModule} from "primeng/dialog";
 import {TableModule} from "primeng/table";
 import {UsuarioModule} from "./usuario/usuario.module";
+import {UsuarioService} from "./service/usuario.service";
+import {ServicoModule} from "./servico/servico.module";
 
 @NgModule({
   declarations: [
@@ -31,30 +33,34 @@ import {UsuarioModule} from "./usuario/usuario.module";
     UsuarioCadastroComponent,
     UsuarioListagemComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    UsuarioModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    SidebarModule,
-    PanelMenuModule,
-    ToastModule,
-    InputNumberModule,
-    BlockUIModule.forRoot(),
-    ToolbarModule,
-    ButtonModule,
-    InputTextModule,
-    InputMaskModule,
-    DropdownModule,
-    DialogModule,
-    TableModule,
-    BrowserAnimationsModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        UsuarioModule,
+        ServicoModule,
+        DropdownModule,
+        InputMaskModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        SidebarModule,
+        PanelMenuModule,
+        ToastModule,
+        InputNumberModule,
+        BlockUIModule.forRoot(),
+        ToolbarModule,
+        ButtonModule,
+        InputTextModule,
+        InputMaskModule,
+        DropdownModule,
+        DialogModule,
+        TableModule,
+        BrowserAnimationsModule,
+        FormsModule
+    ],
   providers: [
     MessageService,
+    UsuarioService,
   ],
   bootstrap: [AppComponent]
 })

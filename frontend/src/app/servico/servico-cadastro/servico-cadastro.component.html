@@ -1,0 +1,37 @@
+<p-toast position="top-right"></p-toast>
+<div class="p-grid p-fluid">
+  <block-ui>
+    <div class="sm:col-12 grid text-800">
+      <div class="sm:col-12">
+        <span>
+          <label for="nome">Nome*:</label>
+          <input id="nome" type="text" [(ngModel)]="servico.nome" pInputText>
+        </span>
+      </div>
+      <div class="sm:col-12">
+        <span>
+          <label for="email">Descrição*:</label>
+          <input id="email" type="text" [(ngModel)]="servico.descricao" pInputText>
+        </span>
+      </div>
+      <div class="sm:col-12">
+        <span>
+          <label for="senha">Preço*:</label>
+          <input id="senha" type="text" [(ngModel)]="servico.preco" pInputText>
+        </span>
+      </div>
+
+      <div class="sm:col-4">
+        <button pButton type="button" label="Cancelar" class="p-button-danger" (click)="cancelar()"></button>
+      </div>
+      <div class="sm:col-4">
+        <button pButton type="reset" label="Limpar" class="p-button-warning" (click)="limpar()"></button>
+      </div>
+      <div class="sm:col-4">
+        <button pButton type="submit" label="Salvar" class="p-button-success" (click)="salvar()"></button>
+      </div>
+
+    </div>
+
+  </block-ui>
+</div>

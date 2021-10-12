@@ -5,7 +5,7 @@ import {AppComponent} from "./app.component";
 const routes: Routes = [
   { path: "", component: AppComponent },
   { path: "usuario", loadChildren: () => import('./usuario/usuario.module').then(module => module.UsuarioModule) },
-
+  { path: "servico", loadChildren: () => import('./servico/servico.module').then(module => module.ServicoModule) },
 ];
 
 @NgModule({

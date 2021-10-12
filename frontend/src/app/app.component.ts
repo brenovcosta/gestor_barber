@@ -30,8 +30,8 @@ export class AppComponent {
           label: 'Serviços',
           icon: 'pi pi-fw pi-user',
           items: [
-            {label: 'Cadastro de Serviços', icon: 'pi pi-fw pi-user-plus'},
-            {label: 'Listagem de Serviços', icon: 'pi pi-fw pi-users'}
+            {label: 'Cadastro de Serviços', icon: 'pi pi-fw pi-user-plus', routerLink: 'servico/add'},
+            {label: 'Listagem de Serviços', icon: 'pi pi-fw pi-users', routerLink: 'servico'}
           ]
         },
       ]
