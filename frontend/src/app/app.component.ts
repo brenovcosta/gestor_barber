@@ -26,14 +26,34 @@ export class AppComponent {
           {label: 'Listagem de Usuários', icon: 'pi pi-fw pi-users', routerLink: 'usuario'}
         ]
       },
+      {
+        label: 'Serviços',
+        icon: 'pi pi-fw pi-user',
+        items: [
+          {label: 'Cadastro de Serviços', icon: 'pi pi-fw pi-plus', routerLink: 'servico/add'},
+          {label: 'Listagem de Serviços', icon: 'pi pi-fw pi-list', routerLink: 'servico'}
+        ]
+      },
         {
-          label: 'Serviços',
-          icon: 'pi pi-fw pi-user',
+          label: 'Horários',
+          icon: 'pi pi-fw pi-calendar',
           items: [
-            {label: 'Cadastro de Serviços', icon: 'pi pi-fw pi-user-plus', routerLink: 'servico/add'},
-            {label: 'Listagem de Serviços', icon: 'pi pi-fw pi-users', routerLink: 'servico'}
+            {label: 'Cadastro de Horários', icon: 'pi pi-fw pi-calendar-plus', routerLink: 'horario/add'},
+            {label: 'Listagem de Horários', icon: 'pi pi-fw pi-list', routerLink: 'horario'}
           ]
         },
+
       ]
-    }];
+    },
+    {
+      label: 'Agenda',
+      icon: 'pi pi-pw pi-calendar',
+      items: [{
+        label: 'Agendar Horário',
+        icon: 'pi pi-fw pi-calendar-plus',
+        routerLink: 'agenda/add'
+      }
+      ]
+    },
+  ];
 }

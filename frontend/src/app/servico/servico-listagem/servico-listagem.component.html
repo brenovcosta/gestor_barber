@@ -5,10 +5,10 @@
     <div class="card">
       <p-toolbar styleClass="sm:col-12">
         <ng-template pTemplate="left">
-          <button pButton label="Adicionar cidade" icon="pi pi-plus" class="p-button-success" routerLink="add"></button>
+          <button pButton label="Adicionar novo serviço" icon="pi pi-plus" class="p-button-success" routerLink="add"></button>
         </ng-template>
         <ng-template pTemplate="right">
-          <button pButton label="Voltar" icon="pi pi-plus" class="p-button-info" routerLink="/"></button>
+          <button pButton label="Voltar" icon="pi pi-home" class="p-button-info" routerLink="/"></button>
         </ng-template>
       </p-toolbar>
     </div>
@@ -18,9 +18,8 @@
         <tr>
           <th>#</th>
           <th>Nome</th>
-          <th>Email</th>
-          <th>CPF</th>
-          <th>Tipo</th>
+          <th>Preço</th>
+          <th>Descrição</th>
           <th>Opções</th>
         </tr>
       </ng-template>
@@ -28,15 +27,15 @@
         <tr>
           <td>{{servicos.id}}</td>
           <td>{{servicos.nome}}</td>
-          <td>{{servicos.preco}}</td>
+          <td>{{servicos.preco | currency: 'BRL'}}</td>
           <td>{{servicos.descricao}}</td>
           <td>
             <div class="grid">
               <div class="sm:col-6">
-                <button pButton type="button" label="Excluir" class="p-button-danger"></button>
+                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger"></button>
               </div>
               <div class="sm:col-6">
-                <button pButton type="button" label="Editar" class="p-button-warning"></button>
+                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning"></button>
               </div>
             </div>
           </td>

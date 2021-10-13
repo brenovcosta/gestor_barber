@@ -54,7 +54,7 @@ export class ServicoCadastroComponent implements OnInit {
       return false;
     }
     if(preco <= 0){
-      this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.formatoInválido, ConstantesUtil.campoInválido('Preço')));
+      this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.formatoInvalido, ConstantesUtil.campoInvalido('Preço')));
       return false;
     }
     return true;

@@ -8,7 +8,14 @@ import {Servico} from "../../model/servico.model";
 })
 export class ServicoListagemComponent implements OnInit {
 
-  servicos!: Servico[];
+  servicos: Servico[] = [
+    {
+      id:1,
+      nome: 'Corte de Cabelo',
+      preco: 18.65,
+      descricao: "Corte de Cabelo"
+    }
+  ];
 
   constructor() { }
 

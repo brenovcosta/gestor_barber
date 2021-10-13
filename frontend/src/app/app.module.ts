@@ -27,6 +27,7 @@ import {UsuarioModule} from "./usuario/usuario.module";
 import {UsuarioService} from "./service/usuario.service";
 import {ServicoModule} from "./servico/servico.module";
 import {TopbarComponent} from './components/topbar/topbar.component';
+import {HorariosModule} from "./horarios/horarios.module";
 
 @NgModule({
   declarations: [
@@ -35,35 +36,37 @@ import {TopbarComponent} from './components/topbar/topbar.component';
     UsuarioListagemComponent,
     TopbarComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        UsuarioModule,
-        ServicoModule,
-        DropdownModule,
-        InputMaskModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        SidebarModule,
-        PanelMenuModule,
-        ToastModule,
-        InputNumberModule,
-        BlockUIModule.forRoot(),
-        ToolbarModule,
-        ButtonModule,
-        InputTextModule,
-        InputMaskModule,
-        DropdownModule,
-        DialogModule,
-        TableModule,
-        BrowserAnimationsModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    UsuarioModule,
+    ServicoModule,
+    DropdownModule,
+    InputMaskModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    SidebarModule,
+    PanelMenuModule,
+    ToastModule,
+    InputNumberModule,
+    BlockUIModule.forRoot(),
+    ToolbarModule,
+    ButtonModule,
+    InputTextModule,
+    InputMaskModule,
+    DropdownModule,
+    DialogModule,
+    TableModule,
+    HorariosModule,
+    BrowserAnimationsModule,
+    FormsModule
+  ],
   providers: [
     MessageService,
     UsuarioService,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

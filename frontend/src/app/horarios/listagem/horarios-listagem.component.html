@@ -5,7 +5,7 @@
     <div class="card">
       <p-toolbar styleClass="sm:col-12">
         <ng-template pTemplate="left">
-          <button pButton label="Adicionar novo usuário" icon="pi pi-plus" class="p-button-success" routerLink="add"></button>
+          <button pButton label="Adicionar novo horário" icon="pi pi-plus" class="p-button-success" routerLink="add"></button>
         </ng-template>
         <ng-template pTemplate="right">
           <button pButton label="Voltar" icon="pi pi-home" class="p-button-info" routerLink="/"></button>
@@ -13,24 +13,20 @@
       </p-toolbar>
     </div>
 
-    <p-table [value]="pessoas" responsiveLayout="scroll">
+    <p-table [value]="horarios" responsiveLayout="scroll">
       <ng-template pTemplate="header">
         <tr>
           <th>#</th>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>CPF</th>
-          <th>Tipo</th>
+          <th>Início</th>
+          <th>Fim</th>
           <th>Opções</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-pessoas>
+      <ng-template pTemplate="body" let-horarios>
         <tr>
-          <td>{{pessoas.id}}</td>
-          <td>{{pessoas.nome}}</td>
-          <td>{{pessoas.email}}</td>
-          <td>{{pessoas.cpf}}</td>
-          <td>{{pessoas.tipo}}</td>
+          <td>{{horarios.id}}</td>
+          <td>{{horarios.fim | date:'dd/mm/yy, hh:mm'}}</td>
+          <td>{{horarios.inicio | date:'dd/mm/yy, hh:mm'}}</td>
           <td>
             <div class="grid">
               <div class="sm:col-6">

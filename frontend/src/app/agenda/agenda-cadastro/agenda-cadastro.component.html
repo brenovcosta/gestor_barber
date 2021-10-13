@@ -1,0 +1,38 @@
+<p-toast position="top-right"></p-toast>
+<block-ui>
+  <div class="p-grid p-fluid">
+
+    <p-table [value]="horarios" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Início</th>
+          <th>Fim</th>
+          <th>Serviço</th>
+          <th>Preço</th>
+          <th>Opções</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-horarios>
+        <tr>
+          <td>{{horarios.fim | date:'dd/mm/yy, hh:mm'}}</td>
+          <td>{{horarios.inicio | date:'dd/mm/yy, hh:mm'}}</td>
+          <td>{{horarios.servico.nome}}</td>
+          <td>{{horarios.servico.preco | currency: 'BRL'}}</td>
+          <td>
+            <div class="grid">
+              <div class="sm:col-6">
+                <button pButton type="button" label="Agendar" icon="pi pi-times" class="p-button-info"></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</block-ui>
+
+<p-dialog>
+  <block-ui>
+
+  </block-ui>
+</p-dialog>
