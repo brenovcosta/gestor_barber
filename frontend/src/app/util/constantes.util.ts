@@ -10,4 +10,9 @@ export class ConstantesUtil {
     return `O campo ${campo} é obrigatório!`;
   }
 
+  static formatoInválido = "Valor inválido!";
+  static campoInválido(campo: string){
+    return `O valor do campo ${campo} deve ser maior que zero!`;
+  }
+
 }

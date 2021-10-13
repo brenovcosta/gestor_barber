@@ -13,6 +13,8 @@ import {DialogModule} from "primeng/dialog";
 import {TableModule} from "primeng/table";
 import {ToolbarModule} from "primeng/toolbar";
 import {FormsModule} from "@angular/forms";
+import {InputNumberModule} from "primeng/inputnumber";
+import {InputTextareaModule} from "primeng/inputtextarea";
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {FormsModule} from "@angular/forms";
     ButtonModule,
     DialogModule,
     TableModule,
+    InputNumberModule,
+    InputTextareaModule,
     ToolbarModule,
     ServicoRoutingModule,
     FormsModule

@@ -26,12 +26,14 @@ import {TableModule} from "primeng/table";
 import {UsuarioModule} from "./usuario/usuario.module";
 import {UsuarioService} from "./service/usuario.service";
 import {ServicoModule} from "./servico/servico.module";
+import {TopbarComponent} from './components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioCadastroComponent,
-    UsuarioListagemComponent
+    UsuarioListagemComponent,
+    TopbarComponent,
   ],
     imports: [
         BrowserModule,

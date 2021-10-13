@@ -10,14 +10,14 @@
       </div>
       <div class="sm:col-12">
         <span>
-          <label for="email">Descrição*:</label>
-          <input id="email" type="text" [(ngModel)]="servico.descricao" pInputText>
+          <label for="email">Descrição:</label>
+          <textarea id="email" type="text" [rows]="5" [(ngModel)]="servico.descricao" pInputTextarea></textarea>
         </span>
       </div>
       <div class="sm:col-12">
         <span>
-          <label for="senha">Preço*:</label>
-          <input id="senha" type="text" [(ngModel)]="servico.preco" pInputText>
+          <label for="preco">Preço*:</label>
+          <p-inputNumber [(ngModel)]="servico.preco" id="preco"></p-inputNumber>
         </span>
       </div>
 
