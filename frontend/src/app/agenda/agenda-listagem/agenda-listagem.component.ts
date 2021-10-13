@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {Agenda} from "../../model/agenda.model";
 import {Router} from "@angular/router";
-import {BlockUI, NgBlockUI} from "ng-block-ui";
 
 @Component({
-  selector: 'app-agenda-cadastro',
-  templateUrl: './agenda-cadastro.component.html',
-  styleUrls: ['./agenda-cadastro.component.css']
+  selector: 'app-agenda-listagem',
+  templateUrl: './agenda-listagem.component.html',
+  styleUrls: ['./agenda-listagem.component.css']
 })
-export class AgendaCadastroComponent implements OnInit {
+export class AgendaListagemComponent implements OnInit {
 
-  @BlockUI() blockUI!: NgBlockUI;
   agenda = new Agenda();
   horarios: Agenda[] = [
     {
@@ -21,6 +19,10 @@ export class AgendaCadastroComponent implements OnInit {
         id:1,
         nome: 'Corte de Cabelo',
         preco: 18
+      },
+      pessoa: {
+        nome: "Breno Costa",
+        numero: "(37) 998215451"
       }
     }
   ];
@@ -31,4 +33,5 @@ export class AgendaCadastroComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

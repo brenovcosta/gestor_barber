@@ -52,6 +52,11 @@ export class AppComponent {
         label: 'Agendar Horário',
         icon: 'pi pi-fw pi-calendar-plus',
         routerLink: 'agenda/add'
+      },
+      {
+        label: 'Agenda',
+        icon: 'pi pi-fw pi-calendar',
+        routerLink: 'agenda'
       }
       ]
     },

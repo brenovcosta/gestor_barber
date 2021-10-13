@@ -6,6 +6,7 @@ export class Pessoa {
   public senha?: string;
   public cpf?: string;
   public tipo?: string;
+  public numero?: string;
 
   constructor(){ }
 }

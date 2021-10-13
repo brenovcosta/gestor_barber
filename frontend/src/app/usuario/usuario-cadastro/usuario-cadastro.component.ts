@@ -44,13 +44,25 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   private checkFields() {
-    let { nome, email } = this.pessoa;
+    let { nome, email, numero, cpf, senha } = this.pessoa;
     if (!nome){
       this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroObrigatorio, ConstantesUtil.campoObrigatorio('Nome')));
       return false;
     }
     if (!email){
       this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroObrigatorio, ConstantesUtil.campoObrigatorio('Email')));
+      return false;
+    }
+    if (!senha){
+      this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroObrigatorio, ConstantesUtil.campoObrigatorio('Senha')));
+      return false;
+    }
+    if (!numero){
+      this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroObrigatorio, ConstantesUtil.campoObrigatorio('Número')));
+      return false;
+    }
+    if (!cpf){
+      this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroObrigatorio, ConstantesUtil.campoObrigatorio('CPF')));
       return false;
     }
     if(nome.length < 5 || 50 < nome.length){
@@ -61,8 +73,11 @@ export class UsuarioCadastroComponent implements OnInit {
       this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroTamanho, ConstantesUtil.campo('Email', 5, 100)));
       return false;
     }
+    if (senha.length < 8 || senha.length > 20){
+      this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroTamanho, ConstantesUtil.campo('Senha', 8, 20)));
+      return false;
+    }
     return true;
   }
-
 
 }

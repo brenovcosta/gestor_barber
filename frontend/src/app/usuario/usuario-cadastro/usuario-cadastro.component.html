@@ -14,11 +14,19 @@
           <input id="email" type="email" [(ngModel)]="pessoa.email" pInputText>
         </span>
       </div>
-      <div class="sm:col-12">
-        <span>
-          <label for="senha">Senha*:</label>
-          <input id="senha" type="password" [(ngModel)]="pessoa.senha" pInputText>
-        </span>
+      <div class="sm:col-12 grid">
+        <div class="sm:col-6">
+          <span>
+            <label for="senha">Senha*:</label>
+            <input id="senha" type="password" [(ngModel)]="pessoa.senha" pInputText>
+          </span>
+        </div>
+        <div class="sm:col-6">
+          <span>
+            <label for="numero">Número*:</label>
+            <p-inputMask mask="(99) 9-9999-9999" [(ngModel)]="pessoa.numero" id="numero"></p-inputMask>
+          </span>
+        </div>
       </div>
       <div class="sm:col-12 grid">
         <div class="sm:col-6">
