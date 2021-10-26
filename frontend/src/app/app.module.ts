@@ -16,7 +16,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {InputTextModule} from "primeng/inputtext";
 import {ButtonModule} from "primeng/button";
 import {BlockUIModule} from "ng-block-ui";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 import {ToolbarModule} from "primeng/toolbar";
 import {DropdownModule} from "primeng/dropdown";
 import {FormsModule} from "@angular/forms";
@@ -26,15 +26,15 @@ import {TableModule} from "primeng/table";
 import {UsuarioModule} from "./usuario/usuario.module";
 import {UsuarioService} from "./service/usuario.service";
 import {ServicoModule} from "./servico/servico.module";
-import {TopbarComponent} from './components/topbar/topbar.component';
 import {HorariosModule} from "./horarios/horarios.module";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioCadastroComponent,
     UsuarioListagemComponent,
-    TopbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,12 +50,14 @@ import {HorariosModule} from "./horarios/horarios.module";
     PanelMenuModule,
     ToastModule,
     InputNumberModule,
+    HttpClientModule,
     BlockUIModule.forRoot(),
     ToolbarModule,
     ButtonModule,
     InputTextModule,
     InputMaskModule,
     DropdownModule,
+    ConfirmDialogModule,
     DialogModule,
     TableModule,
     HorariosModule,
@@ -65,6 +67,8 @@ import {HorariosModule} from "./horarios/horarios.module";
   providers: [
     MessageService,
     UsuarioService,
+    HttpClient,
+    ConfirmationService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Pessoa} from "../../model/pessoa.model";
+import {UsuarioService} from "../../service/usuario.service";
+import {BlockUI, NgBlockUI} from "ng-block-ui";
+import {finalize} from "rxjs/operators";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-usuario-listagem',
@@ -8,20 +12,48 @@ import {Pessoa} from "../../model/pessoa.model";
 })
 export class UsuarioListagemComponent implements OnInit {
 
-  pessoas: Pessoa[] = [
-    {
-      id: 1,
-      nome: "Breno",
-      email: "breno@gmail.com",
-      cpf: "16214040645",
-      senha: "1234",
-      tipo: "ADM"
-    }
-  ];
+  @BlockUI() blockUI!: NgBlockUI;
+  pessoas: Pessoa[] = []
 
-  constructor() { }
+  constructor(
+    private service: UsuarioService,
+    private mensagemService: MessageService,
+    private confirmationService: ConfirmationService
+  ) { }
 
   ngOnInit(): void {
+    this.listarTodos();
+  }
+
+  listarTodos = () => {
+    this.blockUI.start('Carregando..');
+    this.service.findAll()
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(pessoa => {
+        this.pessoas = pessoa;
+      });
+  }
+
+  excluir = (id: number) => {
+    this.blockUI.start('Carregando..');
+    this.service.delete(id).subscribe(() => {
+      this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O usuário foi excluido.'});
+      this.listarTodos();
+      this.blockUI.stop();
+    });
+  }
+
+  editar = (id: number) => {
+
+  }
+
+  confirm(id: number) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir este usuário?',
+      accept: () => {
+        this.excluir(id);
+      }
+    });
   }
 
 }

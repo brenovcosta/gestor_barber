@@ -36,10 +36,10 @@
           <td>
             <div class="grid">
               <div class="sm:col-6">
-                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger"></button>
+                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger" (click)="confirm(pessoas.id)"></button>
               </div>
               <div class="sm:col-6">
-                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning"></button>
+                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning" (click)="editar(pessoas.id)"></button>
               </div>
             </div>
           </td>
@@ -54,3 +54,5 @@
 
   </block-ui>
 </p-dialog>
+
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>
