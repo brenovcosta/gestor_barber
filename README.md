@@ -12,7 +12,7 @@ O sistema foi desenvolvido por Breno Vinicius Costa, aluno do Instituto Federal 
 
 ### Banco de dados
 Primeiramente devemos criar o container do docker que contem nosso banco de dados. 
-Para isso vá até a pasta docker em gestor_barber/backend/src/docker e rode o seguinte comando:
+Para isso vá até a pasta docker em gestor_barber/backend/docker e rode o seguinte comando:
 `docker-compose up -d`
 
 ### Backend
@@ -28,4 +28,4 @@ Agora iremos executar nossa aplicação do frontend. Para isso, vá até a pasta
 Logo após, execute:<br>
 `npm start`
 
-Agora nossa aplicação estará funcioando e podera ser acessada através da url: [http://localhost:4200/](http://localhost:4200/)
+Agora nossa aplicação estará funcionando e podera ser acessada através da url: [http://localhost:4200/](http://localhost:4200/)
