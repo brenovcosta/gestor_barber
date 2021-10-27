@@ -6,6 +6,7 @@ import {MessageService} from "primeng/api";
 import {MessageUtil} from "../../util/message.util";
 import {ConstantesUtil} from "../../util/constantes.util";
 import {Servico} from "../../model/servico.model";
+import {ServicoService} from "../../service/servico.service";
 
 @Component({
   selector: 'app-servico-cadastro',
@@ -19,6 +20,7 @@ export class ServicoCadastroComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private service: ServicoService,
     private mensagemService: MessageService
   ) { }
 
@@ -36,7 +38,10 @@ export class ServicoCadastroComponent implements OnInit {
   salvar = () => {
     if(!this.checkFields()) return;
     this.blockUI.start('Salvando..');
-    this.blockUI.stop();
+    this.service.create(this.servico).subscribe(() => {
+      this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O serviço foi inserido.'});
+      this.blockUI.stop();
+    });
   }
 
   private checkFields() {

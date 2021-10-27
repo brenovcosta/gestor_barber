@@ -32,10 +32,10 @@
           <td>
             <div class="grid">
               <div class="sm:col-6">
-                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger"></button>
+                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger" (click)="confirm(servicos.id)"></button>
               </div>
               <div class="sm:col-6">
-                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning"></button>
+                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning" (click)="editar(servicos.id)"></button>
               </div>
             </div>
           </td>
@@ -45,8 +45,42 @@
   </div>
 </block-ui>
 
-<p-dialog>
-  <block-ui>
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
-  </block-ui>
+<p-dialog [(visible)]="display">
+  <div class="p-grid p-fluid">
+    <block-ui>
+      <div class="sm:col-12 grid text-800">
+        <div class="sm:col-12">
+          <span>
+            <label for="nome">Nome*:</label>
+            <input id="nome" type="text" [(ngModel)]="servico.nome" pInputText>
+          </span>
+        </div>
+        <div class="sm:col-12">
+          <span>
+            <label for="email">Descrição:</label>
+            <textarea id="email" type="text" [rows]="5" [(ngModel)]="servico.descricao" pInputTextarea></textarea>
+          </span>
+        </div>
+        <div class="sm:col-12">
+          <span>
+            <label for="preco">Preço*:</label>
+            <p-inputNumber [(ngModel)]="servico.preco" id="preco"></p-inputNumber>
+          </span>
+        </div>
+
+        <div class="sm:col-4">
+          <button pButton type="button" label="Cancelar" icon="pi pi-home" class="p-button-danger" (click)="cancelar()"></button>
+        </div>
+        <div class="sm:col-4">
+          <button pButton type="reset" label="Limpar" icon="pi pi-trash" class="p-button-warning" (click)="limpar()"></button>
+        </div>
+        <div class="sm:col-4">
+          <button pButton type="submit" label="Salvar" icon="pi pi-save" class="p-button-success" (click)="salvar()"></button>
+        </div>
+
+      </div>
+    </block-ui>
+  </div>
 </p-dialog>

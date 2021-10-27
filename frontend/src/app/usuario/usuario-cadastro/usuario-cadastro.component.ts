@@ -24,7 +24,6 @@ export class UsuarioCadastroComponent implements OnInit {
     id: "CLIENTE"
   };
 
-
   constructor(
     private service: UsuarioService,
     private confirmationService: ConfirmationService,

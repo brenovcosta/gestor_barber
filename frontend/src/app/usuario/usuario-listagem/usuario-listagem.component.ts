@@ -66,7 +66,6 @@ export class UsuarioListagemComponent implements OnInit {
     }, erro => {
       this.mensagemService.add({severity:'errors', summary: 'Erro!', detail: 'Erro ao requisitar atualização do usuário'});
     })
-
   }
 
   confirm(id: number) {

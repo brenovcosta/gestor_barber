@@ -60,6 +60,7 @@ import {PasswordModule} from "primeng/password";
     DropdownModule,
     ConfirmDialogModule,
     PasswordModule,
+    ConfirmDialogModule,
     DialogModule,
     TableModule,
     HorariosModule,

@@ -5,42 +5,21 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
 
     <changeSet id="202109081603-2" author="breno">
-        <createTable tableName="pessoa" remarks="Tabela contendo dados de pessoa">
-            <column name="id" type="bigint" remarks="Um inteiro, contendo o identificador de pessoa.">
+
+        <createTable tableName="servico" remarks="Tabela contendo dados de servico">
+            <column name="id" type="bigint" remarks="Um inteiro, contendo o identificador de servico.">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nome" type="varchar(50)" remarks="Uma string, contendo o nome da pessoa.">
+            <column name="nome" type="varchar(50)" remarks="Uma string, contendo o nome do servico.">
                 <constraints nullable="false"/>
             </column>
-            <column name="apelido" type="varchar(30)" remarks="Uma string, contendo o apelido da pessoa.">
-                <constraints nullable="false"/>
+            <column name="descricao" type="varchar(100)" remarks="Uma string, contendo a descrição do servico.">
+                <constraints nullable="true"/>
             </column>
-            <column name="time" type="varchar(30)" remarks="Uma string, contendo o time que a pessoa torce.">
-                <constraints nullable="false"/>
-            </column>
-            <column name="CPF" type="varchar(30)" remarks="Uma string, contendo o CPF da pessoa.">
-                <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="hobbie" type="varchar(30)" remarks="Uma string, contendo o hobbie da pessoa.">
-                <constraints nullable="false"/>
-            </column>
-            <column name="id_cidade" type="bigint" remarks="Um inteiro, contendo o identificador da cidade em que a pessoa reside.">
+            <column name="preco" type="float" remarks="Uma string, contendo o preço do servico.">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-
-        <addAutoIncrement
-                columnDataType="bigint"
-                columnName="id"
-                incrementBy="1"
-                startWith="1"
-                tableName="pessoa"/>
-
-        <addForeignKeyConstraint  baseColumnNames="id_cidade"
-                                  baseTableName="pessoa"
-                                  constraintName="fk_pessoa_cidade"
-                                  referencedColumnNames="id"
-                                  referencedTableName="cidade"/>
 
     </changeSet>
 
