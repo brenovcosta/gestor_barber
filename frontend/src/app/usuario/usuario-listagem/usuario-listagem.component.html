@@ -49,10 +49,64 @@
   </div>
 </block-ui>
 
-<p-dialog>
-  <block-ui>
+<p-dialog [(visible)]="display">
+  <div class="p-grid p-fluid">
+    <block-ui>
+      <div class="sm:col-12 grid text-800">
+        <div class="sm:col-12">
+        <span>
+          <label for="nome">Nome*:</label>
+          <input id="nome" type="text" [(ngModel)]="pessoa.nome" pInputText>
+        </span>
+        </div>
+        <div class="sm:col-12">
+        <span>
+          <label for="email">Email*:</label>
+          <input id="email" type="email" [(ngModel)]="pessoa.email" pInputText>
+        </span>
+        </div>
+        <div class="sm:col-12 grid">
+          <div class="sm:col-6">
+          <span>
+            <label for="senha">Senha*:</label>
+            <p-password id="senha" [(ngModel)]="pessoa.senha" [feedback]="false" [toggleMask]="true"></p-password>
+          </span>
+          </div>
+          <div class="sm:col-6">
+          <span>
+            <label for="numero">Número*:</label>
+            <p-inputMask mask="(99) 9-9999-9999" [(ngModel)]="pessoa.numero" id="numero"></p-inputMask>
+          </span>
+          </div>
+        </div>
+        <div class="sm:col-12 grid">
+          <div class="sm:col-6">
+          <span>
+            <label for="cpf">CPF*:</label>
+            <p-inputMask mask="999.999.999-99" [(ngModel)]="pessoa.cpf" id="cpf"></p-inputMask>
+          </span>
+          </div>
+          <div class="sm:col-6">
+          <span>
+            <label for="tipo">Tipo*:</label>
+            <p-dropdown id="tipo" [options]="tipos" [(ngModel)]="tipo" optionLabel="nome"></p-dropdown>
+          </span>
+          </div>
+        </div>
 
-  </block-ui>
+        <div class="sm:col-4">
+          <button pButton type="button" label="Cancelar" icon="pi pi-home" class="p-button-danger" (click)="cancelar()"></button>
+        </div>
+        <div class="sm:col-4">
+          <button pButton type="reset" label="Limpar" icon="pi pi-trash" class="p-button-warning" (click)="limpar()"></button>
+        </div>
+        <div class="sm:col-4">
+          <button pButton type="submit" label="Salvar" icon="pi pi-save" class="p-button-success" (click)="salvar()"></button>
+        </div>
+
+      </div>
+    </block-ui>
+  </div>
 </p-dialog>
 
 <p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>
