@@ -18,7 +18,7 @@
         <div class="sm:col-6">
           <span>
             <label for="senha">Senha*:</label>
-            <input id="senha" type="password" [(ngModel)]="pessoa.senha" pInputText>
+            <p-password id="senha" [(ngModel)]="pessoa.senha" [feedback]="false" [toggleMask]="true"></p-password>
           </span>
         </div>
         <div class="sm:col-6">
@@ -56,3 +56,5 @@
     </div>
   </block-ui>
 </div>
+
+<p-confirmDialog header="Confirmação" icon="pi pi-exclamation-triangle"></p-confirmDialog>

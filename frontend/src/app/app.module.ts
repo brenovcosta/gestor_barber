@@ -29,6 +29,7 @@ import {ServicoModule} from "./servico/servico.module";
 import {HorariosModule} from "./horarios/horarios.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {PasswordModule} from "primeng/password";
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     InputMaskModule,
     DropdownModule,
     ConfirmDialogModule,
+    PasswordModule,
     DialogModule,
     TableModule,
     HorariosModule,
