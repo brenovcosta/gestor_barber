@@ -6,6 +6,10 @@ import {BlockUI, NgBlockUI} from "ng-block-ui";
 import {Router} from "@angular/router";
 import {MessageService} from "primeng/api";
 import {Servico} from "../../model/servico.model";
+import {AgendaService} from "../../service/agenda.service";
+import {ServicoService} from "../../service/servico.service";
+import {finalize} from "rxjs/operators";
+import {SituacoesUtil} from "../../util/situacoes.util";
 
 @Component({
   selector: 'app-horarios-cadastro',
@@ -16,15 +20,27 @@ export class HorariosCadastroComponent implements OnInit {
 
   @BlockUI() blockUI!: NgBlockUI;
   agenda = new Agenda();
-  servicos: Servico[] = [];
-  servicoSelecionado = new Servico();
+  servicos!: Servico[];
+  servicoSelecionado!: Servico;
 
   constructor(
     private router: Router,
-    private mensagemService: MessageService
+    private mensagemService: MessageService,
+    private agendaService: AgendaService,
+    private servicoService: ServicoService
   ) { }
 
   ngOnInit(): void {
+    this.buscaServicos();
+  }
+
+  buscaServicos = () => {
+    this.blockUI.start('Carregando...');
+    this.servicoService.findAll()
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(res => {
+        this.servicos = res;
+      });
   }
 
   cancelar = () => {
@@ -37,8 +53,14 @@ export class HorariosCadastroComponent implements OnInit {
 
   salvar = () => {
     if(!this.checkFields()) return;
+    this.agenda.servico = this.servicoSelecionado;
+    this.agenda.disponivel = SituacoesUtil.DISPONIVEL.descricao;
     this.blockUI.start('Salvando..');
-    this.blockUI.stop();
+    this.agendaService.create(this.agenda )
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(() => {
+        this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'Horário salvo com sucesso!'});
+      });
   }
 
   private checkFields() {
@@ -51,7 +73,7 @@ export class HorariosCadastroComponent implements OnInit {
       this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroObrigatorio, ConstantesUtil.campoObrigatorio('Fim')));
       return false;
     }
-    if(inicio > new Date()){
+    if(inicio < new Date()){
       this.mensagemService.add(MessageUtil.erroToast(ConstantesUtil.erroData, ConstantesUtil.dataInvalida('Inicio')));
       return false;
     }

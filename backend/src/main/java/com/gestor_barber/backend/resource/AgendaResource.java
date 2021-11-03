@@ -1,7 +1,7 @@
 package com.gestor_barber.backend.resource;
 
-import com.gestor_barber.backend.service.ServicoService;
-import com.gestor_barber.backend.service.dto.ServicoDTO;
+import com.gestor_barber.backend.service.AgendaService;
+import com.gestor_barber.backend.service.dto.AgendaDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,35 +18,35 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/servico")
-public class ServicoResource {
+@RequestMapping("/api/agenda")
+public class AgendaResource {
 
-    private ServicoService service;
+    private AgendaService agendaService;
 
     @GetMapping
-    public ResponseEntity<List<ServicoDTO>> bucarTodos() {
-        return new ResponseEntity<>(service.buscarTodos(), HttpStatus.OK);
+    public ResponseEntity<List<AgendaDTO>> bucarTodos() {
+        return new ResponseEntity<>(agendaService.buscarTodos(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<ServicoDTO> criar(@RequestBody ServicoDTO servicoDto){
-        return new ResponseEntity<>(service.criar(servicoDto), HttpStatus.CREATED);
+    public ResponseEntity<AgendaDTO> criar(@RequestBody AgendaDTO agendaDTO){
+        return new ResponseEntity<>(agendaService.criar(agendaDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ServicoDTO> buscarPeloId(@PathVariable Long id) {
-        return ResponseEntity.ok(service.buscarPeloId(id));
+    public ResponseEntity<AgendaDTO> buscarPeloId(@PathVariable Long id) {
+        return ResponseEntity.ok(agendaService.buscarPeloId(id));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluir(@PathVariable Long id){
-        service.excluir(id);
+        agendaService.excluir(id);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
-    public ResponseEntity<ServicoDTO> editar(@RequestBody ServicoDTO servicoDto){
-        return ResponseEntity.ok(service.editar(servicoDto));
+    public ResponseEntity<AgendaDTO> editar(@RequestBody AgendaDTO agendaDTO){
+        return ResponseEntity.ok(agendaService.editar(agendaDTO));
     }
 
 }

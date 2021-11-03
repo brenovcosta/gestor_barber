@@ -41,6 +41,7 @@ export class ServicoCadastroComponent implements OnInit {
     this.service.create(this.servico).subscribe(() => {
       this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O serviço foi inserido.'});
       this.blockUI.stop();
+      this.servico = new Servico();
     });
   }
 

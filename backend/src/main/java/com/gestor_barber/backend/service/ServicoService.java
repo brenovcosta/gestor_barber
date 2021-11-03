@@ -2,7 +2,7 @@ package com.gestor_barber.backend.service;
 
 import com.gestor_barber.backend.model.Servico;
 import com.gestor_barber.backend.repository.ServicoRepository;
-import com.gestor_barber.backend.service.dto.ServicoDto;
+import com.gestor_barber.backend.service.dto.ServicoDTO;
 import com.gestor_barber.backend.service.mapper.ServicoMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,22 +20,22 @@ public class ServicoService {
     private final ServicoRepository servicoRepository;
     private final ServicoMapper servicoMapper;
 
-    public ServicoDto criar(ServicoDto servicoDto){
+    public ServicoDTO criar(ServicoDTO servicoDto){
         Servico servico = servicoMapper.toServico(servicoDto);
         return servicoMapper.toServicoDto(servicoRepository.save(servico));
     }
 
-    public List<ServicoDto> buscarTodos(){
+    public List<ServicoDTO> buscarTodos(){
         return servicoRepository.findAll().stream().map(servicoMapper::toServicoDto).collect(Collectors.toList());
     }
 
-    public ServicoDto buscarPeloId(Long id) {
+    public ServicoDTO buscarPeloId(Long id) {
         Optional<Servico> servico = this.servicoRepository.findById(id);
         return servico.map(servicoMapper::toServicoDto).
                 orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public ServicoDto editar(ServicoDto servicoDto){
+    public ServicoDTO editar(ServicoDTO servicoDto){
         Optional<Servico> servico = this.servicoRepository.findById(servicoDto.getId());
         return servico.map(value -> servicoMapper.toServicoDto(servicoRepository.save(servicoMapper.toServico(servicoDto))))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

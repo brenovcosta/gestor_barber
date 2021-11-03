@@ -19,21 +19,25 @@
           <th>#</th>
           <th>Início</th>
           <th>Fim</th>
+          <th>Serviço</th>
+          <th>Situação</th>
           <th>Opções</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-horarios>
         <tr>
           <td>{{horarios.id}}</td>
-          <td>{{horarios.fim | date:'dd/mm/yy, hh:mm'}}</td>
-          <td>{{horarios.inicio | date:'dd/mm/yy, hh:mm'}}</td>
+          <td>{{horarios.inicio | date:'dd/MM/yy, HH:mm'}}</td>
+          <td>{{horarios.fim | date:'dd/MM/yy, HH:mm'}}</td>
+          <td>{{horarios.servico.nome}}</td>
+          <td>{{horarios.disponivel}}</td>
           <td>
             <div class="grid">
               <div class="sm:col-6">
-                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger"></button>
+                <button pButton type="button" label="Excluir" icon="pi pi-times" class="p-button-danger" (click)="excluir(horarios.id)"></button>
               </div>
               <div class="sm:col-6">
-                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning"></button>
+                <button pButton type="button" label="Editar" icon="pi pi-pencil" class="p-button-warning" (click)="editar(horarios.id)"></button>
               </div>
             </div>
           </td>
@@ -43,8 +47,59 @@
   </div>
 </block-ui>
 
-<p-dialog>
-  <block-ui>
+<p-dialog [(visible)]="display">
+  <div class="p-grid p-fluid">
+    <block-ui>
+      <div class="sm:col-12 grid text-800">
+        <div class="sm:col-6">
+        <span>
+          <label for="inicio">Inicio*:</label>
+          <p-calendar
+            [showTime]=true
+            hourFormat="24"
+            [showIcon]="true"
+            [dateFormat]="'dd/mm/yy'"
+            id="inicio"
+            [(ngModel)]="agenda.inicio">
+          </p-calendar>
+        </span>
+        </div>
+        <div class="sm:col-6">
+        <span>
+          <label for="fim">Fim*:</label>
+          <p-calendar
+            [showTime]=true
+            hourFormat="24"
+            [showIcon]="true"
+            [dateFormat]="'dd/mm/yy'"
+            id="fim"
+            [(ngModel)]="agenda.fim">
+          </p-calendar>
+        </span>
+        </div>
+        <div class="sm:col-12">
+        <span>
+          <label for="servico">Serviço*:</label>
+            <p-dropdown
+              id="servico"
+              [options]="servicos"
+              [(ngModel)]="servicoSelecionado"
+              optionLabel="nome">
+            </p-dropdown>
+        </span>
+        </div>
 
-  </block-ui>
+        <div class="sm:col-4">
+          <button pButton type="button" label="Cancelar" icon="pi pi-home" class="p-button-danger" (click)="cancelar()"></button>
+        </div>
+        <div class="sm:col-4">
+          <button pButton type="reset" label="Limpar" icon="pi pi-trash" class="p-button-warning" (click)="limpar()"></button>
+        </div>
+        <div class="sm:col-4">
+          <button pButton type="submit" label="Salvar" icon="pi pi-save" class="p-button-success" (click)="salvar()"></button>
+        </div>
+
+      </div>
+    </block-ui>
+  </div>
 </p-dialog>

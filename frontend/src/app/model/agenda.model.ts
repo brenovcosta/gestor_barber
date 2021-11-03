@@ -6,7 +6,7 @@ export class Agenda {
   public id?: number;
   public inicio?: Date;
   public fim?: Date;
-  public situacao?: string;
+  public disponivel?: string;
   public pessoa?: Pessoa;
   public servico?: Servico;
 

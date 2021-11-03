@@ -25,7 +25,7 @@ public class Servico implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "descricao", nullable = true)
+    @Column(name = "descricao")
     private String descricao;
 
     @Column(name = "preco", nullable = false)

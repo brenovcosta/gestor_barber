@@ -14,7 +14,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="email" type="varchar(100)" remarks="Uma string, contendo o email de pessoa.">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="senha" type="varchar(20)" remarks="Uma string, contendo a senha de pessoa.">
                 <constraints nullable="false"/>

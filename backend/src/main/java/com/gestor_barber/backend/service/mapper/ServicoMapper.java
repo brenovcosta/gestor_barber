@@ -1,7 +1,7 @@
 package com.gestor_barber.backend.service.mapper;
 
 import com.gestor_barber.backend.model.Servico;
-import com.gestor_barber.backend.service.dto.ServicoDto;
+import com.gestor_barber.backend.service.dto.ServicoDTO;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring")
 public interface ServicoMapper {
 
-    ServicoDto toServicoDto (Servico servico);
+    ServicoDTO toServicoDto (Servico servico);
 
-    Servico toServico (ServicoDto servicoDto);
+    Servico toServico (ServicoDTO servicoDto);
 
 }
