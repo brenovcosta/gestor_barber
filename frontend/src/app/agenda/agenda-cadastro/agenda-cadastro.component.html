@@ -20,8 +20,8 @@
           <td>{{horarios.servico.preco | currency: 'BRL'}}</td>
           <td>
             <div class="grid">
-              <div class="sm:col-6">
-                <button pButton type="button" label="Agendar" icon="pi pi-check-square" class="p-button-info"></button>
+              <div class="sm:col-12">
+                <button pButton type="button" label="Agendar" icon="pi pi-check-square" class="p-button-info" (click)="buscarServico(horarios.id)"></button>
               </div>
             </div>
           </td>

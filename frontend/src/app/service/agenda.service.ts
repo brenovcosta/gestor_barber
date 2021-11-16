@@ -35,4 +35,13 @@ export class AgendaService {
     return this.http.put<Agenda>(this.resourceUrl, agenda)
   }
 
+  findSituacao(situacao: string): Observable<Agenda[]> {
+    situacao.toLocaleUpperCase();
+    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${situacao}`);
+  }
+
+  agendar(agenda: Agenda): Observable<Agenda> {
+    return this.http.put<Agenda>(`${this.resourceUrl}/agendar`, agenda)
+  }
+
 }

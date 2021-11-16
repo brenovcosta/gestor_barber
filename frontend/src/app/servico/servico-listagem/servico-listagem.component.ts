@@ -52,11 +52,15 @@ export class ServicoListagemComponent implements OnInit {
 
   excluir = (id: number) => {
     this.blockUI.start('Carregando..');
-    this.service.delete(id).subscribe(() => {
-      this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O serviço foi excluido.'});
-      this.listarTodos();
-      this.blockUI.stop();
-    });
+    this.service.delete(id).pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(() =>
+        this.mensagemExclusao()
+      ,error => this.mensagemService.add({severity: 'error', detail: MessageUtil.ERRO_SERVICO_RELACIONADO}));
+  }
+
+  mensagemExclusao(){
+    this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O serviço foi excluido.'})
+    this.listarTodos();
   }
 
   editar = (id: number) => {
@@ -66,10 +70,10 @@ export class ServicoListagemComponent implements OnInit {
         this.servico = res;
         this.mensagemService.add({severity:'warn', summary: 'Sucesso!', detail: 'Edite os dados e clique em Salvar'});
       }else{
-        this.mensagemService.add({severity:'errors', summary: 'Erro!', detail: 'Erro ao requisitar atualização do usuário'});
+        this.mensagemService.add({severity:'errors', summary: 'Erro!', detail: 'Erro ao requisitar atualização do serviço'});
       }
     }, erro => {
-      this.mensagemService.add({severity:'errors', summary: 'Erro!', detail: 'Erro ao requisitar atualização do usuário'});
+      this.mensagemService.add({severity:'errors', summary: 'Erro!', detail: 'Erro ao requisitar atualização do serviço'});
     })
   }
 

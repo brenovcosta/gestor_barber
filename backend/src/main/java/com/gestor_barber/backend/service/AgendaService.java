@@ -3,6 +3,7 @@ package com.gestor_barber.backend.service;
 import com.gestor_barber.backend.model.Agenda;
 import com.gestor_barber.backend.repository.AgendaRepository;
 import com.gestor_barber.backend.service.dto.AgendaDTO;
+import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
 import com.gestor_barber.backend.service.mapper.AgendaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,10 @@ public class AgendaService {
     public void excluir(Long id){
         Agenda agenda = agendaRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
         agendaRepository.delete(agenda);
+    }
+
+    public List<FiltroAgendaDTO> buscaDisponiveis(String situacao){
+        return agendaRepository.buscarHorariosDisponiveis(situacao);
     }
 
 }
