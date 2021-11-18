@@ -40,6 +40,7 @@ export class HorariosCadastroComponent implements OnInit {
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe(res => {
         this.servicos = res;
+        this.servicoSelecionado = res[0];
       });
   }
 
