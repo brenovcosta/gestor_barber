@@ -9,20 +9,22 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class FiltroAgendaDTO {
+public class FiltroAgendaReservadosDTO {
 
     private Long id;
     private Date inicio;
     private Date fim;
     private String disponivel;
     private ServicoDTO servico;
+    private PessoaDTO pessoa;
 
-    public FiltroAgendaDTO(Long id, Date inicio, Date fim, String disponivel, Servico servico){
+    public FiltroAgendaReservadosDTO(Long id, Date inicio, Date fim, String disponivel, Servico servico, Pessoa pessoa){
         this.id = id;
         this.inicio = inicio;
         this.fim = fim;
         this.disponivel = disponivel;
         this.servico = toServicoDto(servico);
+        this.pessoa = toPessoaDto(pessoa);
     }
 
     public ServicoDTO toServicoDto(Servico servico) {
@@ -38,6 +40,24 @@ public class FiltroAgendaDTO {
         servicoDTO.setPreco( servico.getPreco() );
 
         return servicoDTO;
+    }
+
+    public PessoaDTO toPessoaDto(Pessoa pessoa) {
+        if ( pessoa == null ) {
+            return null;
+        }
+
+        PessoaDTO pessoaDTO = new PessoaDTO();
+
+        pessoaDTO.setId( pessoa.getId() );
+        pessoaDTO.setNome( pessoa.getNome() );
+        pessoaDTO.setEmail( pessoa.getEmail() );
+        pessoaDTO.setSenha( pessoa.getSenha() );
+        pessoaDTO.setCpf( pessoa.getCpf() );
+        pessoaDTO.setTipo( pessoa.getTipo() );
+        pessoaDTO.setNumero( pessoa.getNumero() );
+
+        return pessoaDTO;
     }
 
 }

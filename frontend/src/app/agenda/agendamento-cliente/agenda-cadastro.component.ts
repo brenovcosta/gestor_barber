@@ -36,7 +36,7 @@ export class AgendaCadastroComponent implements OnInit {
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) =>
           this.horarios = res
-      , error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_HORARIOS_DISPONIVEIS}));
+      , error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_CARREGAMENTO_HORARIOS}));
   }
 
   buscarServico = (id: number) => {

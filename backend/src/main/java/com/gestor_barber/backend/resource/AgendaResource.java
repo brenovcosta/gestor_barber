@@ -1,9 +1,9 @@
 package com.gestor_barber.backend.resource;
 
-import com.gestor_barber.backend.model.Agenda;
 import com.gestor_barber.backend.service.AgendaService;
 import com.gestor_barber.backend.service.dto.AgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
+import com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +49,11 @@ public class AgendaResource {
     @PutMapping
     public ResponseEntity<AgendaDTO> editar(@RequestBody AgendaDTO agendaDTO){
         return ResponseEntity.ok(agendaService.editar(agendaDTO));
+    }
+
+    @GetMapping("/reservado/{situacao}")
+    public ResponseEntity<List<FiltroAgendaReservadosDTO>> buscaReservados(@PathVariable String situacao) {
+        return ResponseEntity.ok(agendaService.buscaReservados(situacao));
     }
 
     @GetMapping("/disponivel/{situacao}")

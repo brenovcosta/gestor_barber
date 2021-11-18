@@ -10,7 +10,7 @@ export class MessageUtil {
 
   //ERRO
   static ERRO_SERVICO_RELACIONADO = 'O serviço está associado a algum horário e por isso não pode ser excluido!';
-  static ERRO_HORARIOS_DISPONIVEIS = 'Não foi possível carregar os horários!';
+  static ERRO_CARREGAMENTO_HORARIOS = 'Não foi possível carregar os horários!';
   static ERRO_BUSCA_HORARIO = 'Ocorreu um erro ao buscar o horário, tente novamente mais tarde!';
   static ERRO_AGENDAR_HORARIO = 'Ocorreu um erro ao reservar o horário, tente novamente mais tarde!';
 

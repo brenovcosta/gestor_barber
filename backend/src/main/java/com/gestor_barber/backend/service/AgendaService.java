@@ -4,6 +4,7 @@ import com.gestor_barber.backend.model.Agenda;
 import com.gestor_barber.backend.repository.AgendaRepository;
 import com.gestor_barber.backend.service.dto.AgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
+import com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO;
 import com.gestor_barber.backend.service.mapper.AgendaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,10 @@ public class AgendaService {
 
     public List<FiltroAgendaDTO> buscaDisponiveis(String situacao){
         return agendaRepository.buscarHorariosDisponiveis(situacao);
+    }
+
+    public List<FiltroAgendaReservadosDTO> buscaReservados(String situacao){
+        return agendaRepository.buscarHorariosReservados(situacao);
     }
 
     public AgendaDTO agendar(AgendaDTO agendaDTO){

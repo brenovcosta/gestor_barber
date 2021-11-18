@@ -2,6 +2,7 @@ package com.gestor_barber.backend.repository;
 
 import com.gestor_barber.backend.model.Agenda;
 import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
+import com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,6 +15,9 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
     @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaDTO(a.id, a.inicio, a.fim, a.disponivel, a.servico) FROM Agenda a WHERE a.disponivel LIKE :situacao")
     List<FiltroAgendaDTO> buscarHorariosDisponiveis(@Param("situacao") String situacao);
+
+    @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO(a.id, a.inicio, a.fim, a.disponivel, a.servico, a.pessoa) FROM Agenda a WHERE a.disponivel LIKE :situacao")
+    List<FiltroAgendaReservadosDTO> buscarHorariosReservados(@Param("situacao") String situacao);
 
 
 }

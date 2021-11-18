@@ -8,6 +8,7 @@
         <th>Serviço</th>
         <th>Cliente</th>
         <th>Contato</th>
+        <th>Opções</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-horarios>
@@ -17,6 +18,12 @@
         <td>{{horarios.servico.nome}}</td>
         <td>{{horarios.pessoa.nome}}</td>
         <td>{{horarios.pessoa.numero}}</td>
+        <td>
+          <div class="grid">
+            <div class="sm:col-12">
+              <button pButton type="button" label="Macar como concluído" icon="pi pi-check-square" class="p-button-info" (click)="buscarServico(horarios.id)"></button>
+            </div>
+          </div>
       </tr>
     </ng-template>
   </p-table>

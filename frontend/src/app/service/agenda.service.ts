@@ -36,16 +36,16 @@ export class AgendaService {
     return this.http.put<Agenda>(this.resourceUrl, agenda)
   }
 
+  buscaReservados(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.resourceUrl}/reservado/${SituacoesUtil.RESERVADO.descricao}`);
+  }
+
+  buscaConcluidos(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.resourceUrl}/reservado/${SituacoesUtil.CONCLUIDO.descricao}`);
+  }
+
   buscaDisponiveis(): Observable<Agenda[]> {
     return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.DISPONIVEL.descricao}`);
-  }
-
-  buscaReservados(): Observable<Agenda[]> {
-    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.RESERVADO.descricao}`);
-  }
-
-  buscaConsluidos(): Observable<Agenda[]> {
-    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.CONCLUIDO.descricao}`);
   }
 
   agendar(agenda: Agenda): Observable<Agenda> {
