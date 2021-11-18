@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Agenda} from "../model/agenda.model";
+import {SituacoesUtil} from "../util/situacoes.util";
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +36,16 @@ export class AgendaService {
     return this.http.put<Agenda>(this.resourceUrl, agenda)
   }
 
-  findSituacao(situacao: string): Observable<Agenda[]> {
-    situacao.toLocaleUpperCase();
-    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${situacao}`);
+  buscaDisponiveis(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.DISPONIVEL.descricao}`);
+  }
+
+  buscaReservados(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.RESERVADO.descricao}`);
+  }
+
+  buscaConsluidos(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.CONCLUIDO.descricao}`);
   }
 
   agendar(agenda: Agenda): Observable<Agenda> {

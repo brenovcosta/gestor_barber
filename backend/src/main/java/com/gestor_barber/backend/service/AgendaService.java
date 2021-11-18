@@ -51,4 +51,10 @@ public class AgendaService {
         return agendaRepository.buscarHorariosDisponiveis(situacao);
     }
 
+    public AgendaDTO agendar(AgendaDTO agendaDTO){
+        Optional<Agenda> agenda = this.agendaRepository.findById(agendaDTO.getId());
+        return agenda.map(value -> agendaMapper.toAgendaDTO(agendaRepository.save(agendaMapper.toAgenda(agendaDTO))))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
 }

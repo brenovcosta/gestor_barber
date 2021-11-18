@@ -32,7 +32,7 @@ export class AgendaCadastroComponent implements OnInit {
 
   buscaDisponiveis() {
     this.blockUI.start('Carregando...');
-    this.agendaService.findSituacao(SituacoesUtil.DISPONIVEL.descricao)
+    this.agendaService.buscaDisponiveis()
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) =>
           this.horarios = res
@@ -44,19 +44,21 @@ export class AgendaCadastroComponent implements OnInit {
     this.agendaService.findById(id)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) =>
-        this.horario = res
+          this.agendar(res)
       ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
   }
 
   agendar = (horario: Agenda) => {
+    this.agenda = horario;
+    this.agenda.disponivel = SituacoesUtil.RESERVADO.descricao;
     this.blockUI.start('Agendando..');
-    this.agendaService.agendar(horario).pipe(finalize(() => this.blockUI.stop()))
+    console.log(this.agenda)
+    this.agendaService.agendar(this.agenda).pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
-          if (res!=null){
-
-          }
+        this.buscaDisponiveis();
+        this.messageService.add({severity: 'success', detail: MessageUtil.HORARIO_RESERVADO})
         }
-        ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_AGENDAR_HORARIO}));
+        ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
   }
 
 }

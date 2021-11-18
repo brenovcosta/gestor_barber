@@ -9,7 +9,6 @@ import {Servico} from "../../model/servico.model";
 import {ServicoService} from "../../service/servico.service";
 import {MessageUtil} from "../../util/message.util";
 import {ConstantesUtil} from "../../util/constantes.util";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-listagem',
@@ -28,8 +27,7 @@ export class HorariosListagemComponent implements OnInit {
   constructor(
     private agendaService: AgendaService,
     private servicoService: ServicoService,
-    private mensagemService: MessageService,
-    private router: Router
+    private mensagemService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +48,7 @@ export class HorariosListagemComponent implements OnInit {
     this.agendaService.delete(id)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe(() => {
-      this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O usuário foi excluido.'});
+      this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O horário foi excluido.'});
       this.buscaTodosHorarios();
       this.blockUI.stop();
     });
@@ -63,7 +61,7 @@ export class HorariosListagemComponent implements OnInit {
       .subscribe(res => {
         this.agenda = res;
         if (res != null) {
-          if (res.disponivel === SituacoesUtil.INDISPONIVEL.descricao) {
+          if (res.disponivel === SituacoesUtil.RESERVADO.descricao) {
             this.mensagemService.add({severity: 'error', summary: 'Erro!', detail: 'O horário não pode ser alterado pois já foi contratado.'});
           }else {
             console.log(res);

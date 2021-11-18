@@ -56,4 +56,9 @@ public class AgendaResource {
         return ResponseEntity.ok(agendaService.buscaDisponiveis(situacao));
     }
 
+    @PutMapping("/agendar")
+    public ResponseEntity<AgendaDTO> reservarHorario(@RequestBody AgendaDTO agendaDTO){
+        return ResponseEntity.ok(agendaService.agendar(agendaDTO));
+    }
+
 }
