@@ -33,9 +33,10 @@ export class AgendaListagemComponent implements OnInit {
     this.blockUI.start('Carregando...');
     this.agendaService.buscaReservados()
       .pipe(finalize(() => this.blockUI.stop()))
-      .subscribe((res) =>
-          console.log(this.horarios = res)
-        , error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_CARREGAMENTO_HORARIOS}));
+      .subscribe((res) => {
+        console.log(res);
+        this.horarios = res;
+      }, error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_CARREGAMENTO_HORARIOS}));
   }
 
   buscarServico = (id: number) => {

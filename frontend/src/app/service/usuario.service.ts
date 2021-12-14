@@ -15,6 +15,10 @@ export class UsuarioService {
     private http: HttpClient,
   ) { }
 
+  findByEmail(pessoa: Pessoa): Observable<Pessoa> {
+    return this.http.post<Pessoa>(`${this.resourceUrl}/login`, pessoa);
+  }
+
   findAll(): Observable<Pessoa[]> {
     return this.http.get<Pessoa[]>(this.resourceUrl);
   }

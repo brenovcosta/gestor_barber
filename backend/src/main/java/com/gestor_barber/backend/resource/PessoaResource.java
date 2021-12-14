@@ -2,6 +2,7 @@ package com.gestor_barber.backend.resource;
 
 import com.gestor_barber.backend.service.PessoaService;
 import com.gestor_barber.backend.service.dto.PessoaDTO;
+import com.gestor_barber.backend.service.dto.PessoaLoginDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,11 @@ public class PessoaResource {
     @PutMapping
     public ResponseEntity<PessoaDTO> editar(@RequestBody PessoaDTO pessoaDTO){
         return ResponseEntity.ok(pessoaService.editar(pessoaDTO));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<PessoaLoginDTO> login(@RequestBody PessoaDTO pessoaDTO){
+        return new ResponseEntity<>(pessoaService.login(pessoaDTO), HttpStatus.OK);
     }
 
 }

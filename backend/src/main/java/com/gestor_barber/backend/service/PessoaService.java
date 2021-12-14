@@ -3,6 +3,7 @@ package com.gestor_barber.backend.service;
 import com.gestor_barber.backend.model.Pessoa;
 import com.gestor_barber.backend.repository.PessoaRepository;
 import com.gestor_barber.backend.service.dto.PessoaDTO;
+import com.gestor_barber.backend.service.dto.PessoaLoginDTO;
 import com.gestor_barber.backend.service.mapper.PessoaMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,10 @@ public class PessoaService {
 
     private final PessoaRepository pessoaRepository;
     private final PessoaMapper pessoaMapper;
+
+    public PessoaLoginDTO login(PessoaDTO pessoaDTO){
+        return pessoaRepository.login(pessoaDTO);
+    }
 
     public PessoaDTO criar(PessoaDTO pessoaDTO){
         Pessoa pessoa = pessoaMapper.toPessoa(pessoaDTO);

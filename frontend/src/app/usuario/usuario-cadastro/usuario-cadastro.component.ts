@@ -34,6 +34,10 @@ export class UsuarioCadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  exibiTipo(): boolean{
+    return localStorage.getItem('isLoggedIn') == "true";
+  }
+
   cancelar = () => {
     this.router.navigate(['/']);
   }

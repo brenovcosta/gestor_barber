@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Pessoa} from "../../model/pessoa.model";
 import {UsuarioService} from "../../service/usuario.service";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
@@ -132,6 +132,10 @@ export class UsuarioListagemComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  exibeTipo(pessoa: Pessoa): string{
+    return TiposUtil.exibeTipo(pessoa);
   }
 
 }

@@ -30,12 +30,15 @@ import {HorariosModule} from "./horarios/horarios.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {PasswordModule} from "primeng/password";
+import {AuthGuard} from "./auth/auth.guard";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioCadastroComponent,
     UsuarioListagemComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import {PasswordModule} from "primeng/password";
     FormsModule
   ],
   providers: [
+    AuthGuard,
     MessageService,
     UsuarioService,
     HttpClient,

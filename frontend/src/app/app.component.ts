@@ -10,6 +10,10 @@ export class AppComponent {
 
   exibe: boolean = false;
 
+  exibeTopBar(): boolean{
+    return localStorage.getItem('isLoggedIn') == "true";
+  }
+
   abreFechaMenu() {
     this.exibe = !this.exibe;
   }
