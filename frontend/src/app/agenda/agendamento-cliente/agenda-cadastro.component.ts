@@ -7,6 +7,8 @@ import {AgendaService} from "../../service/agenda.service";
 import {SituacoesUtil} from "../../util/situacoes.util";
 import {MessageService} from "primeng/api";
 import {MessageUtil} from "../../util/message.util";
+import {UsuarioService} from "../../service/usuario.service";
+import {Pessoa} from "../../model/pessoa.model";
 
 @Component({
   selector: 'app-agenda-cadastro',
@@ -19,15 +21,18 @@ export class AgendaCadastroComponent implements OnInit {
   agenda = new Agenda();
   horarios: Agenda[] = [];
   horario = new Agenda();
+  pessoa = new Pessoa();
 
   constructor(
     private router: Router,
     private agendaService: AgendaService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit(): void {
     this.buscaDisponiveis();
+    this.pessoa.email = this.obtemEmailLogado();
   }
 
   buscaDisponiveis() {
@@ -49,16 +54,32 @@ export class AgendaCadastroComponent implements OnInit {
   }
 
   agendar = (horario: Agenda) => {
+    this.blockUI.start('Buscando usuário...');
+    this.usuarioService.findByEmail(this.pessoa)
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe((res) => {
+        this.agenda.pessoa = res;
+      });
+
     this.agenda = horario;
     this.agenda.disponivel = SituacoesUtil.RESERVADO.descricao;
+    console.log(this.agenda);
     this.blockUI.start('Agendando..');
-    console.log(this.agenda)
     this.agendaService.agendar(this.agenda).pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
         this.buscaDisponiveis();
         this.messageService.add({severity: 'success', detail: MessageUtil.HORARIO_RESERVADO})
         }
         ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
+  }
+
+  public obtemEmailLogado(): string {
+    let email = localStorage.getItem('email');
+    console.log(email);
+    if (email != null){
+      return email;
+    }
+    return '';
   }
 
 }

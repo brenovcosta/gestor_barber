@@ -6,6 +6,7 @@ import {MessageUtil} from "../util/message.util";
 import {ConstantesUtil} from "../util/constantes.util";
 import {MessageService} from "primeng/api";
 import {finalize} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private mensagemService: MessageService
+    private mensagemService: MessageService,
+    private route: Router
   ) {
   }
 
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('email', this.usuario.email);
           localStorage.setItem('nome', this.usuario.nome);
           this.mensagemService.add({severity: 'success', detail: 'Usuário logado!'});
+          this.route.navigate(['/']);
         } else {
           this.mensagemService.add({severity: 'error', detail: 'Tente novamente!'});
         }

@@ -13,10 +13,14 @@ import java.util.List;
 @Repository
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
-    @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaDTO(a.id, a.inicio, a.fim, a.disponivel, a.servico) FROM Agenda a WHERE a.disponivel LIKE :situacao")
+    @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaDTO(" +
+            "a.id, a.inicio, a.fim, a.disponivel, a.servico)" +
+            " FROM Agenda a WHERE a.disponivel = :situacao")
     List<FiltroAgendaDTO> buscarHorariosDisponiveis(@Param("situacao") String situacao);
 
-    @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO(a.id, a.inicio, a.fim, a.disponivel, a.servico, a.pessoa) FROM Agenda a WHERE a.disponivel LIKE :situacao")
+    @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO(" +
+            "a.id, a.inicio, a.fim, a.disponivel, a.servico, a.pessoa)" +
+            " FROM Agenda a WHERE a.disponivel = :situacao")
     List<FiltroAgendaReservadosDTO> buscarHorariosReservados(@Param("situacao") String situacao);
 
 

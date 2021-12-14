@@ -9,12 +9,14 @@ const routes: Routes = [
   { path: "", component: AppComponent },
   { path: "login", component: LoginComponent },
   { path: "cadastro", component: UsuarioCadastroComponent },
-  { path: "usuario", loadChildren: () => import('./usuario/usuario.module').then(module => module.UsuarioModule) },
+  { path: "usuario", loadChildren: () => import('./usuario/usuario.module').then(module => module.UsuarioModule),
+    canActivate: [AuthGuard] },
   { path: "servico", loadChildren: () => import('./servico/servico.module').then(module => module.ServicoModule),
     canActivate: [AuthGuard] },
   { path: "horario", loadChildren: () => import('./horarios/horarios.module').then(module => module.HorariosModule),
     canActivate: [AuthGuard] },
-  { path: "agenda", loadChildren: () => import('./agenda/agenda.module').then(module => module.AgendaModule) },
+  { path: "agenda", loadChildren: () => import('./agenda/agenda.module').then(module => module.AgendaModule),
+    canActivate: [AuthGuard] }
 ];
 
 @NgModule({

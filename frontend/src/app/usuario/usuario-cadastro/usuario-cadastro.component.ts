@@ -21,7 +21,7 @@ export class UsuarioCadastroComponent implements OnInit {
   display!: boolean;
   tipos = TiposUtil.tipos;
   tipo: Tipo = {
-    id: "Cliente"
+    id: "CLIENTE"
   };
 
   constructor(
