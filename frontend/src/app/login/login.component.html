@@ -1,0 +1,40 @@
+<p-toast position="top-right"></p-toast>
+<div class="p-grid p-fluid">
+  <block-ui>
+
+    <div class="col-12 grid login">
+      <div class="col-4"></div>
+      <div class="col-4 titulo">
+        <h1><b>Gestor Barber</b></h1>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4"></div>
+      <div class="col-4">
+        <span>
+          <label for="email">Email*:</label>
+          <input id="email" type="email" [(ngModel)]="usuario.email" pInputText>
+        </span>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4"></div>
+      <div class="col-4">
+        <span>
+          <label for="senha">Senha*:</label>
+          <p-password id="senha" [feedback]="false" [toggleMask]="true" [(ngModel)]="usuario.senha"></p-password>
+        </span>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4"></div>
+      <div class="col-4">
+        <button pButton type="button" label="Logar" icon="pi pi-check" class="p-button-success" (click)="login()"></button>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4"></div>
+      <div class="col-4 titulo">
+        <h3>Ainda não tem uma conta? Se cadastre <a href="/cadastro">aqui</a></h3>
+      </div>
+
+    </div>
+
+  </block-ui>
+</div>

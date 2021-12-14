@@ -21,7 +21,7 @@ export class UsuarioCadastroComponent implements OnInit {
   display!: boolean;
   tipos = TiposUtil.tipos;
   tipo: Tipo = {
-    id: "CLIENTE"
+    id: "Cliente"
   };
 
   constructor(
@@ -32,6 +32,10 @@ export class UsuarioCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  exibiTipo(): boolean{
+    return localStorage.getItem('isLoggedIn') == "true";
   }
 
   cancelar = () => {

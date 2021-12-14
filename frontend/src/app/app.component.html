@@ -4,7 +4,7 @@
   <p-panelMenu [model]="items"></p-panelMenu>
 </p-sidebar>
 
-<mat-toolbar class="topo">
+<mat-toolbar class="topo" *ngIf="exibeTopBar()">
   <button mat-mini-fab color="" (click)="abreFechaMenu()" class="body">
     <mat-icon>menu</mat-icon>
   </button>

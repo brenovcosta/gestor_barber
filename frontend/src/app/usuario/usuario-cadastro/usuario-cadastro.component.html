@@ -35,7 +35,7 @@
             <p-inputMask mask="999.999.999-99" [(ngModel)]="pessoa.cpf" id="cpf"></p-inputMask>
           </span>
         </div>
-        <div class="sm:col-6">
+        <div class="sm:col-6" *ngIf="exibiTipo()">
           <span>
             <label for="tipo">Tipo*:</label>
             <p-dropdown id="tipo" [options]="tipos" [(ngModel)]="tipo" optionLabel="nome"></p-dropdown>
