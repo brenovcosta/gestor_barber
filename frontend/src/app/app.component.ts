@@ -14,6 +14,10 @@ export class AppComponent {
     return localStorage.getItem('isLoggedIn') == "true";
   }
 
+  exibeMenuAdm(): boolean{
+    return localStorage.getItem('tipo') == "ADMINISTRADOR" || localStorage.getItem('tipo') == "FUNCIONARIO";
+  }
+
   abreFechaMenu() {
     this.exibe = !this.exibe;
   }
@@ -22,6 +26,7 @@ export class AppComponent {
     {
       label: 'Cadastros Principais',
       icon: 'pi pi-pw pi-cog',
+      visible: this.exibeMenuAdm(),
       items: [{
         label: 'Usuários',
         icon: 'pi pi-fw pi-user',
@@ -43,7 +48,13 @@ export class AppComponent {
           icon: 'pi pi-fw pi-calendar',
           items: [
             {label: 'Cadastro de Horários', icon: 'pi pi-fw pi-calendar-plus', routerLink: 'horario/add'},
-            {label: 'Listagem de Horários', icon: 'pi pi-fw pi-list', routerLink: 'horario'}
+            {label: 'Listagem de Horários', icon: 'pi pi-fw pi-list', routerLink: 'horario'},
+            {
+              label: 'Agenda',
+              icon: 'pi pi-fw pi-calendar',
+              visible: this.exibeMenuAdm(),
+              routerLink: 'agenda'
+            }
           ]
         },
 
@@ -56,11 +67,6 @@ export class AppComponent {
         label: 'Agendar Horário',
         icon: 'pi pi-fw pi-calendar-plus',
         routerLink: 'agenda/add'
-      },
-      {
-        label: 'Agenda',
-        icon: 'pi pi-fw pi-calendar',
-        routerLink: 'agenda'
       }
       ]
     },

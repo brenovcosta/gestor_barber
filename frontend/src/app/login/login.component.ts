@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
     this.usuarioService.findByEmail(this.usuario)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
-        this.usuario = res;
-        if (res.email) {
+        if (res.email && res.senha === this.usuario.senha) {
+          this.usuario = res;
           localStorage.setItem('isLoggedIn', "true");
           localStorage.setItem('email', this.usuario.email);
           localStorage.setItem('nome', this.usuario.nome);
-          this.mensagemService.add({severity: 'success', detail: 'Usuário logado!'});
+          localStorage.setItem('tipo', this.usuario.tipo ? this.usuario.tipo : '');
           this.route.navigate(['/']);
         } else {
           this.mensagemService.add({severity: 'error', detail: 'Tente novamente!'});

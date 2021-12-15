@@ -64,8 +64,6 @@ export class HorariosListagemComponent implements OnInit {
           if (res.disponivel === SituacoesUtil.RESERVADO.descricao) {
             this.mensagemService.add({severity: 'error', summary: 'Erro!', detail: 'O horário não pode ser alterado pois já foi contratado.'});
           }else {
-            console.log(res);
-            console.log(this.agenda);
             this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'Edite os dados e clique em Salvar'});
             this.display = true;
             this.buscaServicos;

@@ -32,7 +32,7 @@ export class AgendaCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscaDisponiveis();
-    this.pessoa.email = this.obtemEmailLogado();
+    this.obtemEmailLogado();
   }
 
   buscaDisponiveis() {
@@ -54,16 +54,9 @@ export class AgendaCadastroComponent implements OnInit {
   }
 
   agendar = (horario: Agenda) => {
-    this.blockUI.start('Buscando usuário...');
-    this.usuarioService.findByEmail(this.pessoa)
-      .pipe(finalize(() => this.blockUI.stop()))
-      .subscribe((res) => {
-        this.agenda.pessoa = res;
-      });
-
     this.agenda = horario;
     this.agenda.disponivel = SituacoesUtil.RESERVADO.descricao;
-    console.log(this.agenda);
+    this.agenda.pessoa = this.pessoa;
     this.blockUI.start('Agendando..');
     this.agendaService.agendar(this.agenda).pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
@@ -73,13 +66,17 @@ export class AgendaCadastroComponent implements OnInit {
         ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
   }
 
-  public obtemEmailLogado(): string {
+  obtemEmailLogado() {
     let email = localStorage.getItem('email');
-    console.log(email);
     if (email != null){
-      return email;
+      this.pessoa.email = email;
+      this.blockUI.start('Buscando usuário...');
+      this.usuarioService.findByEmail(this.pessoa)
+        .pipe(finalize(() => this.blockUI.stop()))
+        .subscribe((res) => {
+          this.pessoa = res;
+        });
     }
-    return '';
   }
 
 }

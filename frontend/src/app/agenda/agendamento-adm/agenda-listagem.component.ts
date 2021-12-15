@@ -34,7 +34,6 @@ export class AgendaListagemComponent implements OnInit {
     this.agendaService.buscaReservados()
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
-        console.log(res);
         this.horarios = res;
       }, error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_CARREGAMENTO_HORARIOS}));
   }
@@ -52,7 +51,6 @@ export class AgendaListagemComponent implements OnInit {
     this.agenda = horario;
     this.agenda.disponivel = SituacoesUtil.CONCLUIDO.descricao;
     this.blockUI.start('Concluindo..');
-    console.log(this.agenda)
     this.agendaService.agendar(this.agenda).pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
           this.buscaHorariosReservados();
