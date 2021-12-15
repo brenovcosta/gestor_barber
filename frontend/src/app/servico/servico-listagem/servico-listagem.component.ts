@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Servico} from "../../model/servico.model";
 import {finalize} from "rxjs/operators";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
