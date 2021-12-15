@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { HorariosRoutingModule } from './horarios-routing.module';
-import { HorariosCadastroComponent } from './cadastro/horarios-cadastro.component';
-import { HorariosListagemComponent } from './listagem/horarios-listagem.component';
+import {HorariosRoutingModule} from './horarios-routing.module';
+import {HorariosCadastroComponent} from './cadastro/horarios-cadastro.component';
+import {HorariosListagemComponent} from './listagem/horarios-listagem.component';
 import {ToastModule} from "primeng/toast";
 import {DropdownModule} from "primeng/dropdown";
 import {BlockUIModule} from "ng-block-ui";

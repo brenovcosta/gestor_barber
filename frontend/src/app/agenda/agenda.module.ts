@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AgendaRoutingModule } from './agenda-routing.module';
-import { AgendaCadastroComponent } from './agendamento-cliente/agenda-cadastro.component';
-import { AgendaListagemComponent } from './agendamento-adm/agenda-listagem.component';
+import {AgendaRoutingModule} from './agenda-routing.module';
+import {AgendaCadastroComponent} from './agendamento-cliente/agenda-cadastro.component';
+import {AgendaListagemComponent} from './agendamento-adm/agenda-listagem.component';
 import {ToastModule} from "primeng/toast";
 import {BlockUIModule} from "ng-block-ui";
 import {DropdownModule} from "primeng/dropdown";

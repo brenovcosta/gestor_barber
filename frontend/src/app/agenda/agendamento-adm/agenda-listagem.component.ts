@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Agenda} from "../../model/agenda.model";
 import {Router} from "@angular/router";
 import {finalize} from "rxjs/operators";
