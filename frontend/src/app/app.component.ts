@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItem} from "primeng/api";
 
 @Component({
@@ -6,9 +6,14 @@ import {MenuItem} from "primeng/api";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   exibe: boolean = false;
+
+  ngOnInit(): void {
+    this.exibeMenuAdm();
+    this.exibeTopBar();
+  }
 
   exibeTopBar(): boolean{
     return localStorage.getItem('isLoggedIn') == "true";

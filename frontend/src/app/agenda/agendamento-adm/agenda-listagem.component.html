@@ -6,6 +6,7 @@
         <th>Início</th>
         <th>Fim</th>
         <th>Serviço</th>
+        <th>Preço</th>
         <th>Cliente</th>
         <th>Contato</th>
         <th>Opções</th>
@@ -13,9 +14,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-horarios>
       <tr>
-        <td>{{horarios.inicio | date:'dd/MM/yy, HH:mm'}}</td>
-        <td>{{horarios.fim | date:'dd/MM/yy, HH:mm'}}</td>
+        <td>{{horarios.inicio | date:'dd/mm/yy, HH:mm'}}</td>
+        <td>{{horarios.fim | date:'dd/MM/yy, hh:mm'}}</td>
         <td>{{horarios.servico.nome}}</td>
+        <td>{{horarios.servico.preco | currency: 'BRL'}}</td>
         <td>{{horarios.pessoa.nome}}</td>
         <td>{{horarios.pessoa.numero}}</td>
         <td>
