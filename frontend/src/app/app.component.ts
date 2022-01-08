@@ -75,5 +75,10 @@ export class AppComponent implements OnInit{
       }
       ]
     },
+    {
+      label: 'Sair',
+      icon: 'pi pi-pw pi-sign-out',
+      routerLink: 'logout'
+    }
   ];
 }

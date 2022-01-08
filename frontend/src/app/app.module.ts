@@ -31,7 +31,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {PasswordModule} from "primeng/password";
 import {AuthGuard} from "./auth/auth.guard";
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
+import {LogoutComponent} from "./logout/logout.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LoginComponent } from './login/login.component';
     UsuarioCadastroComponent,
     UsuarioListagemComponent,
     LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
