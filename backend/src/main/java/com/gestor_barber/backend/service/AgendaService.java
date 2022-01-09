@@ -60,8 +60,8 @@ public class AgendaService {
         agendaRepository.delete(agenda);
     }
 
-    public List<FiltroAgendaDTO> buscaDisponiveis(String situacao){
-        return agendaRepository.buscarHorariosDisponiveis(situacao);
+    public Page<List<FiltroAgendaDTO>> buscaDisponiveis(AgendaDTO agendaDTO, Pageable pageable){
+        return agendaRepository.buscarHorariosDisponiveis(agendaDTO, pageable);
     }
 
     public Page<List<FiltroAgendaReservadosDTO>> buscaReservados(AgendaDTO agendaDTO, Pageable pageable){

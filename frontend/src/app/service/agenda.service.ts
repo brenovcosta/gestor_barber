@@ -51,8 +51,10 @@ export class AgendaService {
     return this.http.get<Agenda[]>(`${this.resourceUrl}/reservado/${SituacoesUtil.CONCLUIDO.descricao}`);
   }
 
-  buscaDisponiveis(): Observable<Agenda[]> {
-    return this.http.get<Agenda[]>(`${this.resourceUrl}/disponivel/${SituacoesUtil.DISPONIVEL.descricao}`);
+  buscaDisponiveis(agenda: Agenda, table: Table | undefined): Observable<any> {
+    agenda.disponivel = SituacoesUtil.DISPONIVEL.descricao;
+    const params: HttpParams = RequestUtil.getRequestParams(table);
+    return this.http.post(`${this.resourceUrl}/disponivel`, agenda , {params: params});
   }
 
   agendar(agenda: Agenda): Observable<Agenda> {

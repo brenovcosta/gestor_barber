@@ -35,7 +35,7 @@ export class AgendaListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscaHorariosReservados();
-    this.listarTodos();
+    this.listarTodosServicos();
   }
 
   buscaHorariosReservados() {
@@ -48,7 +48,7 @@ export class AgendaListagemComponent implements OnInit {
       }, error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_CARREGAMENTO_HORARIOS}));
   }
 
-  listarTodos = () => {
+  listarTodosServicos = () => {
     this.blockUI.start('Carregando..');
     this.servicoService.findAll()
       .pipe(finalize(() => this.blockUI.stop()))

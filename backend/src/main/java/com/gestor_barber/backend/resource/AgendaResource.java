@@ -65,9 +65,9 @@ public class AgendaResource {
        return new ResponseEntity<>(agendaService.buscarHorariosPorData(agendaDTO), HttpStatus.OK);
     }
 
-    @GetMapping("/disponivel/{situacao}")
-    public ResponseEntity<List<FiltroAgendaDTO>> buscaDisponiveis(@PathVariable String situacao) {
-        return ResponseEntity.ok(agendaService.buscaDisponiveis(situacao));
+    @PostMapping("/disponivel")
+    public ResponseEntity<Page<List<FiltroAgendaDTO>>> buscaDisponiveis(@RequestBody AgendaDTO agendaDTO, Pageable pageable) {
+        return ResponseEntity.ok(agendaService.buscaDisponiveis(agendaDTO, pageable));
     }
 
     @PutMapping("/agendar")

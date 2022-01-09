@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Agenda} from "../../model/agenda.model";
 import {Router} from "@angular/router";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
@@ -9,6 +9,10 @@ import {MessageService} from "primeng/api";
 import {MessageUtil} from "../../util/message.util";
 import {UsuarioService} from "../../service/usuario.service";
 import {Pessoa} from "../../model/pessoa.model";
+import {Table} from "primeng/table";
+import {Page} from "../../util/page";
+import {Servico} from "../../model/servico.model";
+import {ServicoService} from "../../service/servico.service";
 
 @Component({
   selector: 'app-agenda-cadastro',
@@ -17,27 +21,41 @@ import {Pessoa} from "../../model/pessoa.model";
 })
 export class AgendaCadastroComponent implements OnInit {
 
+  @ViewChild('tabela', {static: false}) table: Table | undefined;
   @BlockUI() blockUI!: NgBlockUI;
   agenda = new Agenda();
-  horarios: Agenda[] = [];
+  horarios = new Page<Agenda>();
   horario = new Agenda();
+  filtro = new Agenda();
   pessoa = new Pessoa();
+  servicos: Servico[] = [];
 
   constructor(
     private router: Router,
     private agendaService: AgendaService,
     private messageService: MessageService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    public servicoService: ServicoService
   ) { }
 
   ngOnInit(): void {
     this.buscaDisponiveis();
+    this.listarTodosServicos();
     this.obtemEmailLogado();
+  }
+
+  listarTodosServicos = () => {
+    this.blockUI.start('Carregando..');
+    this.servicoService.findAll()
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(res => {
+        this.servicos = res;
+      });
   }
 
   buscaDisponiveis() {
     this.blockUI.start('Carregando...');
-    this.agendaService.buscaDisponiveis()
+    this.agendaService.buscaDisponiveis(this.filtro, this.table)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) =>
           this.horarios = res
