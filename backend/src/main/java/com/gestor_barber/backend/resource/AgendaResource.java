@@ -6,7 +6,6 @@ import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO;
 import com.itextpdf.text.DocumentException;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -56,9 +55,9 @@ public class AgendaResource {
         return ResponseEntity.ok(agendaService.editar(agendaDTO));
     }
 
-    @PostMapping("/reservado/{situacao}")
-    public ResponseEntity<Page<List<FiltroAgendaReservadosDTO>>> buscaReservados(@PathVariable String situacao, Pageable pageable) {
-        return ResponseEntity.ok(agendaService.buscaReservados(situacao, pageable));
+    @PostMapping("/reservado")
+    public ResponseEntity<Page<List<FiltroAgendaReservadosDTO>>> buscaReservados(@RequestBody AgendaDTO agendaDTO, Pageable pageable) {
+        return ResponseEntity.ok(agendaService.buscaReservados(agendaDTO, pageable));
     }
 
     @PostMapping("/filtrar")

@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Agenda} from "../model/agenda.model";
 import {SituacoesUtil} from "../util/situacoes.util";
+import {Table} from "primeng/table";
+import {RequestUtil} from "../util/RequestUtil";
 
 @Injectable({
   providedIn: 'root'
@@ -36,8 +38,13 @@ export class AgendaService {
     return this.http.put<Agenda>(this.resourceUrl, agenda)
   }
 
-  buscaReservados(): Observable<Agenda[]> {
-    return this.http.get<Agenda[]>(`${this.resourceUrl}/reservado/${SituacoesUtil.RESERVADO.descricao}`);
+  buscaReservados(agenda: Agenda, table: Table | undefined): Observable<any> {
+    const params: HttpParams = RequestUtil.getRequestParams(table);
+    return this.http.post(`${this.resourceUrl}/reservado`, agenda , {params: params});
+  }
+
+  filtrar(agenda: Agenda): Observable<any> {
+    return this.http.post(`${this.resourceUrl}/filtrar`, agenda);
   }
 
   buscaConcluidos(): Observable<Agenda[]> {
@@ -50,6 +57,13 @@ export class AgendaService {
 
   agendar(agenda: Agenda): Observable<Agenda> {
     return this.http.put<Agenda>(`${this.resourceUrl}/agendar`, agenda)
+  }
+
+  gerarRelatorioPdf(agendaList: Agenda[]): Observable<any> {
+    return this.http.post(`${this.resourceUrl}/exportar-pdf`, agendaList, {
+      observe: "response",
+      responseType: "arraybuffer"
+    });
   }
 
 }

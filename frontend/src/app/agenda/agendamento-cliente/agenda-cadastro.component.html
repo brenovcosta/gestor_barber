@@ -14,8 +14,8 @@
       </ng-template>
       <ng-template pTemplate="body" let-horarios>
         <tr>
-          <td>{{horarios.inicio | date:'dd/M/yyyy, HH:mm'}}</td>
-          <td>{{horarios.fim | date:'dd/M/yyyy, HH:mm'}}</td>
+          <td>{{horarios.inicio | date:'dd/MM/yyyy, HH:mm'}}</td>
+          <td>{{horarios.fim | date:'dd/MM/yyyy, HH:mm'}}</td>
           <td>{{horarios.servico.nome}}</td>
           <td>{{horarios.servico.preco | currency: 'BRL'}}</td>
           <td>

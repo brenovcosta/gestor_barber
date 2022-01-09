@@ -8,7 +8,7 @@ export class Agenda {
   public fim?: Date;
   public disponivel?: string;
   public pessoa?: Pessoa;
-  public servico?: Servico;
+  public servico = new Servico();
 
   constructor(){ }
 }

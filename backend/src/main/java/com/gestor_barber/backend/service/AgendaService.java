@@ -6,6 +6,7 @@ import com.gestor_barber.backend.service.dto.AgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO;
 import com.gestor_barber.backend.service.dto.PdfOptionsDTO;
+import com.gestor_barber.backend.service.dto.ServicoDTO;
 import com.gestor_barber.backend.service.mapper.AgendaMapper;
 import com.gestor_barber.backend.service.util.BuilderEntity;
 import com.gestor_barber.backend.service.util.ConstantesUtil;
@@ -22,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 @AllArgsConstructor
 @Service
@@ -61,8 +64,8 @@ public class AgendaService {
         return agendaRepository.buscarHorariosDisponiveis(situacao);
     }
 
-    public Page<List<FiltroAgendaReservadosDTO>> buscaReservados(String situacao, Pageable pageable){
-        return agendaRepository.buscarHorariosReservados(situacao, pageable);
+    public Page<List<FiltroAgendaReservadosDTO>> buscaReservados(AgendaDTO agendaDTO, Pageable pageable){
+        return agendaRepository.buscarHorariosReservados(agendaDTO, pageable);
     }
 
     public List<FiltroAgendaReservadosDTO> buscarHorariosPorData(AgendaDTO agendaDTO){
