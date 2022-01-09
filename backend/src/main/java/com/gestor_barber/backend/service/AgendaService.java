@@ -6,7 +6,6 @@ import com.gestor_barber.backend.service.dto.AgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaDTO;
 import com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO;
 import com.gestor_barber.backend.service.dto.PdfOptionsDTO;
-import com.gestor_barber.backend.service.dto.ServicoDTO;
 import com.gestor_barber.backend.service.mapper.AgendaMapper;
 import com.gestor_barber.backend.service.util.BuilderEntity;
 import com.gestor_barber.backend.service.util.ConstantesUtil;
@@ -19,12 +18,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static java.util.Objects.isNull;
 
 @AllArgsConstructor
 @Service
@@ -77,11 +77,20 @@ public class AgendaService {
     public byte[] gerarArquivoPdf(List<AgendaDTO> agendaDTOList) throws IOException, DocumentException {
         String template = "relatorio-agenda";
 
+        final float[] totalPeriodo = {0F};
+        agendaDTOList.forEach(agendaDTO -> totalPeriodo[0] = dateToStringFormatado(totalPeriodo[0], agendaDTO.getServico().getPreco()));
+        BigDecimal total = BigDecimal.valueOf(totalPeriodo[0]);
+
         Map<String, Object> params = BuilderEntity
                 .pdf()
                 .addParamIfNotNull(ConstantesUtil.AGENDA, agendaDTOList)
+                .addParamIfNotNull(ConstantesUtil.TOTAL_PERIODO, total)
                 .build();
         return pdfService.generatePdf(template, params, new PdfOptionsDTO(ConstantesUtil.MARGIN_PDF));
+    }
+
+    public float dateToStringFormatado(float total, float preco){
+        return total += preco;
     }
 
 }

@@ -11,6 +11,7 @@ public final class ConstantesUtil {
     public static final Float MARGIN_PDF = 25F;
 
     public static final String AGENDA = "agendaList";
+    public static final String TOTAL_PERIODO = "totalPeriodo";
 
     public static final String ERRO_EXPORTAR = "Erro ao exportar";
     public static final String ERRO_TITULO = "ERRO";
