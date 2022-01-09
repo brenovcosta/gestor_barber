@@ -54,26 +54,41 @@ export class AppComponent implements OnInit{
           items: [
             {label: 'Cadastro de Horários', icon: 'pi pi-fw pi-calendar-plus', routerLink: 'horario/add'},
             {label: 'Listagem de Horários', icon: 'pi pi-fw pi-list', routerLink: 'horario'},
-            {
-              label: 'Agenda',
-              icon: 'pi pi-fw pi-calendar',
-              visible: this.exibeMenuAdm(),
-              routerLink: 'agenda'
-            }
           ]
         },
-
       ]
     },
     {
-      label: 'Agenda',
-      icon: 'pi pi-pw pi-calendar',
-      items: [{
-        label: 'Agendar Horário',
-        icon: 'pi pi-fw pi-calendar-plus',
-        routerLink: 'agenda/add'
-      }
+      label: 'Agenda e Relatórios',
+      icon: 'pi pi-pw pi-cog',
+      visible: this.exibeMenuAdm(),
+      items: [
+        {
+          label: 'Agenda',
+          icon: 'pi pi-fw pi-calendar',
+          routerLink: 'agenda'
+        },
+        {
+          label: 'Relatório de Vendas',
+          icon: 'pi pi-fw pi-file-pdf',
+          routerLink: 'relatorio'
+        },
       ]
+    },
+    {
+      label: 'Editar dados',
+      icon: 'pi pi-fw pi-user-edit',
+      routerLink: 'edit'
+    },
+    {
+      label: 'Horários Disponíveis',
+      icon: 'pi pi-fw pi-calendar-plus',
+      routerLink: 'agenda/add'
+    },
+    {
+      label: 'Histórico de Agendamentos',
+      icon: 'pi pi-fw pi-list',
+      routerLink: 'agenda/add'
     },
     {
       label: 'Sair',

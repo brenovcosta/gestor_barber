@@ -35,6 +35,10 @@ export class AgendaListagemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('reload') === "no"){
+      localStorage.setItem('reload', "si");
+      window.location.reload();
+    }
     this.buscaHorariosReservados();
     this.listarTodosServicos();
   }
