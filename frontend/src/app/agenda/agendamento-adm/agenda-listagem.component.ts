@@ -11,6 +11,7 @@ import {Table} from "primeng/table";
 import {Page} from "../../util/page";
 import {ServicoService} from "../../service/servico.service";
 import {Servico} from "../../model/servico.model";
+import {ExportacaoUtil} from "../../util/ExportacaoUtil";
 
 @Component({
   selector: 'app-agenda-listagem',
@@ -40,7 +41,7 @@ export class AgendaListagemComponent implements OnInit {
 
   buscaHorariosReservados() {
     this.blockUI.start('Carregando...');
-    this.agenda.servico.id = 1;
+    this.filtro.disponivel = SituacoesUtil.RESERVADO.descricao;
     this.agendaService.buscaReservados(this.filtro, this.table)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res: Page<Agenda>) => {
@@ -75,7 +76,7 @@ export class AgendaListagemComponent implements OnInit {
           this.buscaHorariosReservados();
           this.messageService.add({severity: 'success', detail: MessageUtil.HORARIO_RESERVADO})
         }
-        ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
+        , error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
   }
 
 }

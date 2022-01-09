@@ -13,6 +13,7 @@ import {DialogModule} from "primeng/dialog";
 import {RadioButtonModule} from "primeng/radiobutton";
 import {CalendarModule} from "primeng/calendar";
 import {FormsModule} from "@angular/forms";
+import {ToolbarModule} from "primeng/toolbar";
 
 
 @NgModule({
@@ -20,18 +21,19 @@ import {FormsModule} from "@angular/forms";
     AgendaCadastroComponent,
     AgendaListagemComponent
   ],
-  imports: [
-    CommonModule,
-    ToastModule,
-    BlockUIModule.forRoot(),
-    DropdownModule,
-    ButtonModule,
-    TableModule,
-    DialogModule,
-    AgendaRoutingModule,
-    RadioButtonModule,
-    CalendarModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        ToastModule,
+        BlockUIModule.forRoot(),
+        DropdownModule,
+        ButtonModule,
+        TableModule,
+        DialogModule,
+        AgendaRoutingModule,
+        RadioButtonModule,
+        CalendarModule,
+        FormsModule,
+        ToolbarModule
+    ]
 })
 export class AgendaModule { }
