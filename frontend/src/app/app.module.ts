@@ -33,6 +33,10 @@ import {PasswordModule} from "primeng/password";
 import {AuthGuard} from "./auth/auth.guard";
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from "./logout/logout.component";
+import { RelatorioComponent } from './relatorio/relatorio.component';
+import {CalendarModule} from "primeng/calendar";
+import { EditComponent } from './edit/edit.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,10 @@ import {LogoutComponent} from "./logout/logout.component";
     UsuarioCadastroComponent,
     UsuarioListagemComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    RelatorioComponent,
+    EditComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +76,8 @@ import {LogoutComponent} from "./logout/logout.component";
     TableModule,
     HorariosModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    CalendarModule
   ],
   providers: [
     AuthGuard,

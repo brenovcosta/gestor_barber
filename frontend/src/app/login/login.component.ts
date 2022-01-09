@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    localStorage.clear();
+    localStorage.setItem('isLoggedIn', "false");
   }
 
   login() {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
       .subscribe((res) => {
         if (res.email && res.senha === this.usuario.senha) {
           this.usuario = res;
+          localStorage.setItem('reload', "no");
           localStorage.setItem('isLoggedIn', "true");
           localStorage.setItem('email', this.usuario.email);
           localStorage.setItem('nome', this.usuario.nome);

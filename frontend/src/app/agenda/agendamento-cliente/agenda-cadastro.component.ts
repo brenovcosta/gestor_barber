@@ -35,10 +35,14 @@ export class AgendaCadastroComponent implements OnInit {
     private agendaService: AgendaService,
     private messageService: MessageService,
     private usuarioService: UsuarioService,
-    public servicoService: ServicoService
+    private servicoService: ServicoService
   ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('reload') === "no"){
+      localStorage.setItem('reload', "si");
+      window.location.reload();
+    }
     this.buscaDisponiveis();
     this.listarTodosServicos();
     this.obtemEmailLogado();

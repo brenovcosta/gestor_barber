@@ -260,7 +260,7 @@
 <body>
 
 <table>
-    <tr>
+    <tr class="bg-cinza-claro">
         <td class="bg-cinza-claro font-medium">Código do Serviço</td>
         <td class="bg-cinza-claro font-medium">Início</td>
         <td class="bg-cinza-claro font-medium">Fim</td>
@@ -270,15 +270,14 @@
     </tr>
 
     <tr th:each="agenda, iStat: ${agendaList}">
-
         <td class="padding">
             <span class="font-small" th:text="${agenda.id}"></span>
         </td>
         <td class="padding">
-            <span class="font-small" th:text="${#temporals.format(agenda.inicio, 'dd/MM/yyyy HH:mm')}"></span>
+            <span class="font-small" th:text="${agenda.inicio}"></span>
         </td>
         <td class="padding">
-            <span class="font-small" th:text="${#temporals.format(agenda.fim, 'dd/MM/yyyy HH:mm')}"></span>
+            <span class="font-small" th:text="${agenda.fim}"></span>
         </td>
         <td class="padding">
             <span class="font-small" th:text="${agenda.servico.nome}"></span>
@@ -289,8 +288,14 @@
         <td class="padding">
             <span class="font-small" th:text="${agenda.pessoa.nome}"></span>
         </td>
-
     </tr>
+
+    <tr class="bg-cinza-claro">
+        <td class="padding" colspan="6">
+            <p class="font-small"><strong>Total (R$) arrecadado para o período selecionado</strong>  R$ [[${#numbers.formatDecimal(totalPeriodo, 0, 'POINT', 2, 'COMMA')}]]</p>
+        </td>
+    </tr>
+
 </table>
 
 </body>
