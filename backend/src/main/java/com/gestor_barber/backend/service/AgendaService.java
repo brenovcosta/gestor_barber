@@ -68,10 +68,6 @@ public class AgendaService {
         return agendaRepository.buscarHorariosReservados(agendaDTO, pageable);
     }
 
-    public List<FiltroAgendaReservadosDTO> buscarHorariosPorData(AgendaDTO agendaDTO){
-        return agendaRepository.buscarHorariosPorData(agendaDTO);
-    }
-
     public AgendaDTO agendar(AgendaDTO agendaDTO){
         Optional<Agenda> agenda = this.agendaRepository.findById(agendaDTO.getId());
         return agenda.map(value -> agendaMapper.toAgendaDTO(agendaRepository.save(agendaMapper.toAgenda(agendaDTO))))

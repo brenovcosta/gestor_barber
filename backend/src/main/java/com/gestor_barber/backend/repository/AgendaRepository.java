@@ -34,11 +34,4 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
             "AND (:#{#filtro.servico.id} is null or a.servico.id = :#{#filtro.servico.id})")
     Page<List<FiltroAgendaReservadosDTO>>buscarHorariosReservados(@Param("filtro") AgendaDTO filtro, Pageable pageable);
 
-    @Query("SELECT NEW com.gestor_barber.backend.service.dto.FiltroAgendaReservadosDTO(a.id, a.inicio, a.fim, a.disponivel, a.servico, a.pessoa) " +
-            "FROM Agenda a " +
-            "WHERE a.inicio >= :#{#filtro.inicio} " +
-            "AND a.fim <= :#{#filtro.fim}")
-    List<FiltroAgendaReservadosDTO> buscarHorariosPorData(@Param("filtro") AgendaDTO filtro);
-
-
 }
