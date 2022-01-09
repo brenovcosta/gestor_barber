@@ -61,7 +61,7 @@ export class HistoricoComponent implements OnInit {
     if (this.filtro.pessoa == null){
       this.filtro.pessoa = new Pessoa();
     }
-    this.agendaService.buscaDisponiveis(this.filtro, this.table)
+    this.agendaService.buscaReservados(this.filtro, this.table)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) =>
           this.horarios = res
