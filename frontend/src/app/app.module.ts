@@ -35,6 +35,8 @@ import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from "./logout/logout.component";
 import { RelatorioComponent } from './relatorio/relatorio.component';
 import {CalendarModule} from "primeng/calendar";
+import { EditComponent } from './edit/edit.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import {CalendarModule} from "primeng/calendar";
     UsuarioListagemComponent,
     LoginComponent,
     LogoutComponent,
-    RelatorioComponent
+    RelatorioComponent,
+    EditComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,

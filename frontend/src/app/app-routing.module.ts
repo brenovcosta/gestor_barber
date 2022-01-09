@@ -6,12 +6,16 @@ import {LoginComponent} from "./login/login.component";
 import {UsuarioCadastroComponent} from "./usuario/usuario-cadastro/usuario-cadastro.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {RelatorioComponent} from "./relatorio/relatorio.component";
+import {EditComponent} from "./edit/edit.component";
+import {HistoricoComponent} from "./historico/historico.component";
 
 const routes: Routes = [
   { path: "", component: AppComponent },
   { path: "login", component: LoginComponent },
   { path: "logout", component: LogoutComponent },
   { path: "cadastro", component: UsuarioCadastroComponent },
+  { path: "edit", component: EditComponent },
+  { path: "historico", component: HistoricoComponent },
   { path: "relatorio", component: RelatorioComponent, canActivate: [AuthGuard] },
   { path: "usuario", loadChildren: () => import('./usuario/usuario.module').then(module => module.UsuarioModule),
     canActivate: [AuthGuard] },

@@ -88,7 +88,7 @@ export class AppComponent implements OnInit{
     {
       label: 'Histórico de Agendamentos',
       icon: 'pi pi-fw pi-list',
-      routerLink: 'agenda/add'
+      routerLink: 'historico'
     },
     {
       label: 'Sair',

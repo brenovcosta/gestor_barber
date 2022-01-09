@@ -35,7 +35,7 @@ export class AgendaCadastroComponent implements OnInit {
     private agendaService: AgendaService,
     private messageService: MessageService,
     private usuarioService: UsuarioService,
-    public servicoService: ServicoService
+    private servicoService: ServicoService
   ) { }
 
   ngOnInit(): void {
