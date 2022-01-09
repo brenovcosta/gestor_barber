@@ -7,6 +7,7 @@ import {ConstantesUtil} from "../util/constantes.util";
 import {MessageService} from "primeng/api";
 import {finalize} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {TiposUtil} from "../util/tipos.util";
 
 @Component({
   selector: 'app-login',
@@ -34,13 +35,17 @@ export class LoginComponent implements OnInit {
     this.usuarioService.findByEmail(this.usuario)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
-        this.usuario = res;
-        if (res.email) {
+        if (res.email && res.senha === this.usuario.senha) {
+          this.usuario = res;
           localStorage.setItem('isLoggedIn', "true");
           localStorage.setItem('email', this.usuario.email);
           localStorage.setItem('nome', this.usuario.nome);
-          this.mensagemService.add({severity: 'success', detail: 'Usuário logado!'});
-          this.route.navigate(['/']);
+          localStorage.setItem('tipo', this.usuario.tipo ? this.usuario.tipo : '');
+          if (this.usuario.tipo == TiposUtil.CLIENTE.id){
+            this.route.navigate(['/agenda/add']);
+          }else{
+            this.route.navigate(['/agenda']);
+          }
         } else {
           this.mensagemService.add({severity: 'error', detail: 'Tente novamente!'});
         }

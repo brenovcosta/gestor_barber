@@ -50,6 +50,7 @@ export class UsuarioCadastroComponent implements OnInit {
     if(!this.checkFields()) return;
     this.blockUI.start('Salvando..');
     this.pessoa.tipo = this.tipo.id;
+    console.log(this.pessoa);
       this.service.create(this.pessoa).subscribe(() => {
         this.confirm();
         this.mensagemService.add({severity:'success', summary: 'Sucesso!', detail: 'O usuário foi inserido.'});
@@ -59,6 +60,9 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   confirm() {
+    if (this.exibiTipo()){
+      return;
+    }
     this.confirmationService.confirm({
       message: 'Deseja cadastrar outro usuário?',
       accept: () => {

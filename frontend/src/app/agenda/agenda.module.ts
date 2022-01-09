@@ -10,6 +10,9 @@ import {DropdownModule} from "primeng/dropdown";
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
 import {DialogModule} from "primeng/dialog";
+import {RadioButtonModule} from "primeng/radiobutton";
+import {CalendarModule} from "primeng/calendar";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import {DialogModule} from "primeng/dialog";
     ButtonModule,
     TableModule,
     DialogModule,
-    AgendaRoutingModule
+    AgendaRoutingModule,
+    RadioButtonModule,
+    CalendarModule,
+    FormsModule
   ]
 })
 export class AgendaModule { }

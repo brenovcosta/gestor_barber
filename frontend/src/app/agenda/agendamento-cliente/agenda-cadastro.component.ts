@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Agenda} from "../../model/agenda.model";
 import {Router} from "@angular/router";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
@@ -9,6 +9,10 @@ import {MessageService} from "primeng/api";
 import {MessageUtil} from "../../util/message.util";
 import {UsuarioService} from "../../service/usuario.service";
 import {Pessoa} from "../../model/pessoa.model";
+import {Table} from "primeng/table";
+import {Page} from "../../util/page";
+import {Servico} from "../../model/servico.model";
+import {ServicoService} from "../../service/servico.service";
 
 @Component({
   selector: 'app-agenda-cadastro',
@@ -17,27 +21,41 @@ import {Pessoa} from "../../model/pessoa.model";
 })
 export class AgendaCadastroComponent implements OnInit {
 
+  @ViewChild('tabela', {static: false}) table: Table | undefined;
   @BlockUI() blockUI!: NgBlockUI;
   agenda = new Agenda();
-  horarios: Agenda[] = [];
+  horarios = new Page<Agenda>();
   horario = new Agenda();
+  filtro = new Agenda();
   pessoa = new Pessoa();
+  servicos: Servico[] = [];
 
   constructor(
     private router: Router,
     private agendaService: AgendaService,
     private messageService: MessageService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    public servicoService: ServicoService
   ) { }
 
   ngOnInit(): void {
     this.buscaDisponiveis();
-    this.pessoa.email = this.obtemEmailLogado();
+    this.listarTodosServicos();
+    this.obtemEmailLogado();
+  }
+
+  listarTodosServicos = () => {
+    this.blockUI.start('Carregando..');
+    this.servicoService.findAll()
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(res => {
+        this.servicos = res;
+      });
   }
 
   buscaDisponiveis() {
     this.blockUI.start('Carregando...');
-    this.agendaService.buscaDisponiveis()
+    this.agendaService.buscaDisponiveis(this.filtro, this.table)
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) =>
           this.horarios = res
@@ -54,16 +72,9 @@ export class AgendaCadastroComponent implements OnInit {
   }
 
   agendar = (horario: Agenda) => {
-    this.blockUI.start('Buscando usuário...');
-    this.usuarioService.findByEmail(this.pessoa)
-      .pipe(finalize(() => this.blockUI.stop()))
-      .subscribe((res) => {
-        this.agenda.pessoa = res;
-      });
-
     this.agenda = horario;
     this.agenda.disponivel = SituacoesUtil.RESERVADO.descricao;
-    console.log(this.agenda);
+    this.agenda.pessoa = this.pessoa;
     this.blockUI.start('Agendando..');
     this.agendaService.agendar(this.agenda).pipe(finalize(() => this.blockUI.stop()))
       .subscribe((res) => {
@@ -73,13 +84,17 @@ export class AgendaCadastroComponent implements OnInit {
         ,error => this.messageService.add({severity: 'error', detail: MessageUtil.ERRO_BUSCA_HORARIO}));
   }
 
-  public obtemEmailLogado(): string {
+  obtemEmailLogado() {
     let email = localStorage.getItem('email');
-    console.log(email);
     if (email != null){
-      return email;
+      this.pessoa.email = email;
+      this.blockUI.start('Buscando usuário...');
+      this.usuarioService.findByEmail(this.pessoa)
+        .pipe(finalize(() => this.blockUI.stop()))
+        .subscribe((res) => {
+          this.pessoa = res;
+        });
     }
-    return '';
   }
 
 }
